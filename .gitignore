@@ -4,6 +4,8 @@
 /dist
 /tmp
 /out-tsc
+/hello-world
+/ready-built-files
 # Only exists if Bazel was run
 /bazel-out
 

@@ -3,14 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LearnRxJSComponent } from './learn-rx-js/learn-rx-js.component';
+import {AlertModule} from "ngx-bootstrap";
+import { NgBuildUnderstandingComponent } from './ng-build-understanding/ng-build-understanding.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LearnRxJSComponent,
+    NgBuildUnderstandingComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AlertModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
