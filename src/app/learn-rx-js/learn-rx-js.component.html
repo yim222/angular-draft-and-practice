@@ -37,8 +37,45 @@
   <div class = "test-me" id = "test-me2">Test on me what u want. Id is test-me2</div>
 
 
+  <h3>I am var a = {{configVar}}</h3>
+  <h3>subscribe</h3>
+  <p>When U "subscribe" it's mean that U have defined already at the observable some action or data, and U assign
+  to that now an action that will happen with that . Search for  explain 5#  at the code of the component. </p>
+  <p>Now I'll defined that this action also will happen with this button : </p>
+
+  <button id = "test7"> Click me for do it again ! </button>
+
+  <h3>pipe()</h3>
+    <p>pipe is a method on Observable which is used for composing operators.<br/> See more <a
+      href = "https://blog.angularindepth.com/reading-the-rxjs-6-sources-map-and-pipe-94d51fec71c2" target = "_blank">
+      here
+    </a>
+    </p>
+  <p>
+    The pipe on Rxjs is for give U pipe functions, to each other so each function will do something, and pass the value returned to the next function with operator.
+    His words :
+    <i>“In RxJS, the idea is that you create a pipeline of operators (such as map and filter) that you want to apply to each value emitted by a source observable, of(1,2,3) in this example.
+      This approach lets you create small, reusable operators like map and filter, and compose them together when needed using pipe. “</i>
+   <br> For example :
+
+
+
+  </p>
+  <pre>
+    {{"fromEvent(testme2, 'click')"
+   + ".pipe(scan((count:any ) => count + 1, 0))"
+   +" .subscribe(count => console.log(`Clicked ${count} times rexts observable` ));"}}
+  </pre>
+
+  <p><b>Debugger</b> is cool key word that stop the execution where you put it.</p>
+
+  <h4>Multiple map operators</h4>
+  <p>U can see inside at source2, how many maps operator, comma seperated, inserted inside pipe and pass the value from the previous to next. </p>
+
+  <p>U can learn some operators and debug each U learn for understanding better the operation he does. </p>
+
+
 
 
 </div>
-
 

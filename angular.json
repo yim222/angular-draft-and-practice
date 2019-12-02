@@ -30,6 +30,9 @@
             "scripts": []
           },
           "configurations": {
+            "dev": {
+              
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -250,6 +253,11 @@
       "prefix": "app",
       "architect": {
         "build": {
+          "fileReplacements": [
+            {
+              "replace": "src/app/my-custom-config/readMeSrc/a.js",
+              "with": "src/app/my-custom-config/a.js"
+            }],
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "ready-built-files/lingar2",
