@@ -1,0 +1,27 @@
+<h2>U can see here about promises and async calls</h2>
+
+<p>* Async keyword - in other words make async function that will need in regular case to return promise, if U want
+  that the execution will wait for it. So Async make it like by itself returning Promise, on regualr return. <br/>
+  And by using the wait keyword, in other async funciton - it will wait until it comeback.
+  So U don't need to act it as " Promise" and make then chains, U can insert it inside the regular code, and for the exceptions,
+  use try/catch .</p>
+
+<p>* Notice that if U want to check promises, etc with timeouts, U need the timeout will return Promise by itself,
+  Otherwise - it won't work . </p>
+
+<div id = "myId1" *ngIf = true>Problem with ng - if - checked in the Oninit
+  and return NULL</div>
+<div id = "myId2" *ngIf = true>Problem with ng - if
+  ,Checked on the afterView and return NOT NULL
+</div>
+
+<div class = "section">
+  <h4>Trying with axios</h4>
+  <p>There is a problem that when I am trying to make promise with timeout of Axios, the projection function don't wait
+    for the response. <br/> I am trying here a simple case, so we see if it's happen here ---> After tryin it get solved. See inside. </p>
+
+  <p>I am not so excited from that feature(Async)  , because all at all, it's promises, and it trying to cover on a lack that ,  don't changes so much in the code . </p>
+
+
+</div>
+

@@ -7,13 +7,15 @@ import { LearnRxJSComponent } from './learn-rx-js/learn-rx-js.component';
 import {AlertModule} from "ngx-bootstrap";
 import { NgBuildUnderstandingComponent } from './ng-build-understanding/ng-build-understanding.component';
 import { DraftAreaComponent } from './draft-area/draft-area.component';
+import { PromisesComponent } from './promises/promises.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LearnRxJSComponent,
     NgBuildUnderstandingComponent,
-    DraftAreaComponent
+    DraftAreaComponent,
+    PromisesComponent
   ],
   imports: [
     BrowserModule,
