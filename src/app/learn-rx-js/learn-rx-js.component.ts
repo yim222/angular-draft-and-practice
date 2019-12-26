@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {a} from '../my-custom-config/readmeSrc/a';
 // import * as Rx from 'rxjs/Rx';
 
@@ -7,7 +7,19 @@ import {a} from '../my-custom-config/readmeSrc/a';
 import {interval} from 'rxjs';
 import { fromEvent, Observable, of } from 'rxjs';
 
-import {bufferCount, bufferWhen, delay, filter, scan, map} from "rxjs/operators";
+import {
+  bufferCount,
+  bufferWhen,
+  delay,
+  filter,
+  scan,
+  map,
+  concatAll,
+  mergeAll,
+  switchAll,
+  exhaust,
+  switchMap, tap, pluck, debounceTime
+} from "rxjs/operators";
 // import * as Rx from 'rxjs/Rx';
 
 @Component({
@@ -15,10 +27,13 @@ import {bufferCount, bufferWhen, delay, filter, scan, map} from "rxjs/operators"
   templateUrl: './learn-rx-js.component.html',
   styleUrls: ['./learn-rx-js.component.css']
 })
-export class LearnRxJSComponent implements OnInit {
+export class LearnRxJSComponent implements OnInit , AfterViewInit{
 
   private configVar = null;
   private testCondition = true;
+  timesClicked3:number = 0;
+  obs1: Observable<any>;
+
   constructor() {
 
     const observable = new Observable(subscriber => {
@@ -114,6 +129,16 @@ export class LearnRxJSComponent implements OnInit {
     car.subscribe(par => {
       console.log(par);
     })
+
+    this.obs1 = new Observable(subscriber => {
+      subscriber.next("Apple");
+      subscriber.next("Banana");
+      subscriber.next("cat");
+      subscriber.next("door");
+      subscriber.next("Elephant");
+
+
+    });
   }
 
   ngOnInit() {
@@ -268,11 +293,17 @@ export class LearnRxJSComponent implements OnInit {
 
     //Map with debugger
     const source1 = of("World of pipes", "lingar");
+    //
+    // let xxxx ={value:"sdss", index : 5} ;
+    // source1.pipe(map(xxxx,"d"
+    // )).subscribe(y => console.log(y));
+
     // debugger;
 
     source1.pipe(map(x => {
-        return `****\nHello ${x} \n***`;
-      }
+      console.log(this)
+        return `****\nHello ${x}  and this = ${this}\n***` ;
+      },"d"
     )).subscribe(y => console.log(y));
     const observable2 = new Observable(subscriber => {
       subscriber.next("I am ");
@@ -302,7 +333,8 @@ export class LearnRxJSComponent implements OnInit {
       console.log("subscriber = ", subscriber);
     });
 
-    let source3 = of (1000, 30 , 50 );      debugger;
+    let source3 = of (1000, 30 , 50 );
+    // debugger;
 
     source3.pipe(
       map(x => x *3),
@@ -315,7 +347,264 @@ export class LearnRxJSComponent implements OnInit {
       intervalTime += 2500;}, intervalTime));
   }
 
-  ngAfterViewChecked(){
+  ngAfterViewInit(){
+
+   let obs2 = new Observable(subscriber => {
+      subscriber.next("Apple");
+      subscriber.next("Banana");
+      subscriber.next("cat");
+      subscriber.next("door");
+      subscriber.next("Elephant");
+
+
+    });
+  const button23 = document.querySelector('#try1');
+  const addHere  = document.getElementById('addHere');
+  let timeout = 0;
+
+    //    fromEvent(button6, 'click').subscribe(() => {
+    //       console.log("button 6 clicked ");
+    //     });
+   let obs3 = fromEvent(button23, 'click').subscribe//what subscribe when it's happen
+   (
+     n =>{
+       setTimeout(()=>{
+         obs2.subscribe(val=>{
+           console.log("values = " , val);
+           let newEl = document.createElement("p");
+           let content = document.createTextNode (val+"");
+           newEl.appendChild(content);
+
+           addHere.appendChild(newEl);
+
+
+         })
+       },timeout+=1500);
+
+     }
+   )
+    console.log("Copied from the links (didn't was working so I did some chagnes")
+    // map(x:number => x * x)(of(1, 2, 3)).subscribe((v) => console.log(`value: ${v}`));
+
+    of(1, 2, 3)
+      .pipe(
+        map(x => x * x)
+      ).subscribe((v) => console.log(`value: ${v}`));
+
+   let obs4 = interval(15000);
+   console.log("obs4 = ", obs4);
+   obs4.subscribe((v) => console.log(`Observe (obs4) 4 , value: ${v}`));
+
+   let exampleObs1 = of("Mosheh", "Avraham", "David");
+   let exampleObs2 = of("Faith", "Hope", "Kindness");
+   let exampleObs3 = of("Home", "Job", "Wife");
+
+   console.log("See here how to handle observable of observable (high order observable ");
+
+   let observableOfObservables = new Observable(subscriber => {
+     subscriber.next(exampleObs1);
+     subscriber.next(exampleObs2);
+     subscriber.next(exampleObs3);
+   });
+
+   let seeInnerObs = observableOfObservables
+     .pipe(
+       concatAll()
+     );
+   seeInnerObs.subscribe(
+     value => {
+       console.log("value of high-order-observable bu concat= ", value);
+     }
+   )
+    console.log("this is example with merge, and there is more examples in the link . ")
+
+    let seeInnerObs2 = observableOfObservables.pipe(
+        mergeAll()
+       // switchAll()
+      // exhaust()
+    );
+    seeInnerObs2.subscribe(
+      value => {
+        console.log("value of high-order-observable by merge = ", value);
+      }
+    )
+    console.log("switchMap build new value of  of the inner observable . It's like concat but with Map ");
+    let switchMapOperator = observableOfObservables.pipe(
+      switchMap((x) =>{
+        console.log("x = ", x);
+        return "switchMap build new value of " + x +" from index "  ;
+
+      })
+    );
+    switchMapOperator.subscribe(doInEach =>{
+      console.log("The value after using switch Map ", doInEach)
+    });
+    let x = 3;
+    console.log("this calcualation is the number of time the number will do power (squaring ) . In this it's thrre time . \n" +
+      "For example if x is 10. It's 10 X 10 X 10 - x**3. x = " ,x , "x**3 = ",  x**3 );
+
+    console.log("Switch map don't working like that. \n" +
+      "It takes each value of regular elementm and can do on it another observable and return it to the main array. Flat it \n" +
+      "(Don't know why is the above behavior that it's take the returned string. ");
+
+    let switchMapOperator2 = this.obs1.pipe(
+      switchMap(x =>{
+        return of(x + " is Yummy", "Well when " + x + " is food ... ");
+      })
+    );
+
+    switchMapOperator2.subscribe(doInEach =>{
+      console.log("The value after using switch Map ", doInEach)
+    });
+
+    console.log("Now with all parameters. (There is more then that in the docs. Leavee it for now. THIS is good operator for creating new observable from observable  ")
+    let switchMapOperator3 = this.obs1.pipe(
+      switchMap((x, idx) =>{
+        return of(x + " is Yummy", "Well when " + x + " is food ... " ,  "index = "+ idx);
+      }),
+      tap(i=>{
+        console.log("simple tap pipe for logging and regular things inside the observable - value = " + i);
+
+      })
+    );
+    switchMapOperator3.subscribe(doInEach =>{
+      console.log("The value after using switch Map ", doInEach)
+    });
+    const clicks = fromEvent(document, 'click');
+    const tagNames = clicks.pipe(pluck('target', 'tagName'));
+    tagNames.subscribe(x => console.log("pluck = " + x));
+
+    let obs5Nested  =  of (
+      {name: "avi",place : {city: "BS"}},
+      {name: "izik",place : {city: "hevron"}}
+
+
+
+    );
+    obs5Nested.pipe(
+      pluck('name')
+    )
+      .subscribe(next =>{
+        console.log("plunck 1 value = " + next);
+      });
+
+    obs5Nested.pipe(
+      pluck('place'),
+      pluck('city')
+    )
+      .subscribe(next =>{
+        console.log("plunck 2 value = " + next);
+      })
+    //  const button23 = document.querySelector('#try1');
+    let delayEl = document.querySelector('#delay-button');
+    let delayExample = fromEvent(delayEl, 'click');
+
+    delayExample.pipe(delay(1500))
+      .subscribe(x => console.log("delay clicked! ", x));
+
+    let debounceEl = document.querySelector('#debounce-button');
+    let debounceExample = fromEvent(debounceEl, 'click');
+
+    debounceExample.pipe(debounceTime(1500))
+      .subscribe(x => console.log("debounce clicked! ", x));
+
+  console.log("empty console.log - generate the value too : ")
+  this.obs1.subscribe(console.log);
+
+  let threeTogether = this.obs1.pipe(
+
+    //map
+    map(x => x + " is starting with " + x.split('')[0].toUpperCase()),
+
+    //tap
+    tap(()=>console.log("Now with tap operator - U wait more 2 second ")),
+
+    //debounce
+    // debounceTime(2000),
+
+    //debounce
+    delay(2000)
+
+
+
+  )
+    let threePipes = document.querySelector("#three-pipes");
+    fromEvent(threePipes, 'click').subscribe(x=>
+      threeTogether.subscribe(console.log)
+    );
+
+    //from the docs
+    const clicks22 = fromEvent(document, 'click');
+    const buffered = clicks22.pipe(bufferWhen(() =>
+      interval(1000 + Math.random() * 4000)
+    ));
+    buffered.subscribe(x => console.log(x));
+
+    //my trying :
+    let click3Times = document.querySelector('#click-3-times');
+    let output22 = document.querySelector('#output22');
+
+    let doClick3Times = fromEvent(click3Times, 'click');
+    doClick3Times.pipe(//this not work as expected because U pipe all inside the click event that inside bufferWhen. U should pipe it from outside, and just pipe inside bufferWhen the
+      //event U want that will release the buffering. see below the right execution
+      bufferWhen(()=> doClick3Times.pipe(
+        delay(1500))),
+      tap(x=>{
+        console.log("tap1 ")
+      }),
+      filter((ev)=> ev.length >= 3),
+      tap(x =>{
+        console.log("tap - ",x );
+        this.timesClicked3++;
+      })
+    );
+    doClick3Times.subscribe((x)=>{
+      console.log("is this called ? ")
+      // this.timesClicked3++;
+    });
+
+    let justNum1 = 2;
+    let counter22 = 0;
+
+    doClick3Times.pipe(//also not working -
+     delay(justNum1 * 1000),
+      tap (),
+      filter<Event[]>(events => events.length > 3),
+      tap()
+    )
+    .subscribe(something => {
+        console.log("I am trying to be happen " + justNum1 + " after this button clicked...", something)
+      });
+
+   // bufferWhen(closingSelector: () => Observable<any>): OperatorFunction<T, T[]>
+
+    doClick3Times//the right execution
+      .pipe(
+        bufferWhen(()=>doClick3Times.pipe(delay(2000))),
+        tap(next =>console.log("tap ? ", next)),
+        filter(events => events.length >=3)
+      )
+      .subscribe((result)=> {
+        output22.textContent = counter22 + "";
+        this.timesClicked3++;
+        counter22++;
+
+      });
+
+
+
+
+
+
+
+  }//END of Ng view Init
+
+  doSomething1(){
+    console.log ("what's up Angular function  ? ");
+
+  }
+  click3Times =()=>{
+
 
   }
 
