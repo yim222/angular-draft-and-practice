@@ -1,4 +1,5 @@
 import {AfterViewChecked, AfterViewInit, Component, OnInit} from '@angular/core';
+import {Ser1Service} from "./ser1.service";
 import axios from 'axios';
 import set = Reflect.set;
 //TODO - gitting.
@@ -9,11 +10,11 @@ import set = Reflect.set;
 })
 export class DraftAreaComponent implements OnInit , AfterViewChecked, AfterViewInit {
 
-  constructor() { }
+  constructor(private s: Ser1Service) { }
   //http://10.28.76.130:80/xpedient/kitchen/orderSubmission
 
   ngOnInit() {
-
+    this.s.changeX();
 
 
 
