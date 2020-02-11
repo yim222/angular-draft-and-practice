@@ -18,6 +18,8 @@ export class PromisesComponent implements OnInit , AfterViewChecked, AfterViewIn
     console.log("After adding ngIf ? - it's return null " );
     this.doAllExecutiion();
 
+    this.tryLingar6();
+
 
 
   }
@@ -235,7 +237,8 @@ export class PromisesComponent implements OnInit , AfterViewChecked, AfterViewIn
 
     return new Promise(resolve =>
       setTimeout(()=>{
-        resolve("Now I finished")
+        console.log("log - Now I finished - try51PromiseWithTimeout")
+        resolve("Now I finished - try51PromiseWithTimeout")
       }, 5000));
   }
 
@@ -261,6 +264,18 @@ export class PromisesComponent implements OnInit , AfterViewChecked, AfterViewIn
     console.log("Now some axios");
     let  http = axios.create({ timeout: 4500 });
     return http.post("http://10.28.76.130:80/xpedient/kitchen/orderSubmission", {a:"stupidData"});
+  }
+
+  async tryLingar6(){
+
+    console.log("function - tryLingar6");
+
+    console.log("tryLingar6 - Before calling to long functions");
+
+    await  this.try51PromiseWithTimeout();
+
+    console.log("tryLingar6 - After calling to long function");
+
   }
 
 

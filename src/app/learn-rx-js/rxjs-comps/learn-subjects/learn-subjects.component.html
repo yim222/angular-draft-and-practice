@@ -1,0 +1,46 @@
+<p>with God's help</p>
+<p>learn-subjects works!</p>
+
+<h1>Subjects </h1>
+<p><a href = "https://rxjs-dev.firebaseapp.com/guide/subject" target="_blank">Sources</a></p>
+<p>Always check the logs </p>
+
+<p>It's a way to subscribe a lot of action to one observer. He said "are the only way of making any Observable execution be shared to multiple Observers"
+I don't get it, because here I can do many subscribes to observable and they will happen when it will act.
+Maybe it's right on just value observable or like that. Need to understand in the next. </p>
+
+<p>Multicast - a set of data sent across a computer network to many users at the same time.(google translate ) </p>
+
+<p>See function <b>do1()</b> for primary basic example </p>
+
+<p>The same is happen when we use multicasted operator, that you can pipe it to observable, then subscribe it many observer like Subject, <br>
+  and then call connect() function for fire it.
+  <br> But there is an
+  <a href ="https://stackoverflow.com/a/54276535/9727918" target ="_blank">issue</a>
+  in connect() and you need to do workaround. See inside function <b>do2()</b>.</p>
+
+<h5>There are also a few specializations of the Subject type: BehaviorSubject, ReplaySubject, and AsyncSubject.</h5>
+
+<h3>Behavior Subject</h3>
+<p>Represent the latest values emitted. </p>
+<p>BehaviorSubjects are useful for representing "values over time". For instance, an event stream of birthdays is a Subject, but the stream of a person's age would be a BehaviorSubject.</p>
+<p>Behavior said - some value that have a behave and change over time. Like age. The date of birth, unlike that - is permanent and doesn't changed over time. </p>
+
+<h3>Replay Subject</h3>
+<p>Replay subject - it's like the behavior that return the last, but you can also define to it how much old values to return. <br/>
+See the function example, that when the other subscriber subscribe it's return some of the old values. </p>
+
+
+<h3>Use case</h3>
+<p>Maybe for understand the differences between the subject types do the following steps : <br/>
+  - Create the subject <br/>
+  - Define interval that doing next. each 3 seconds<br/>
+
+  - Subscribe one subscriber.<br/>
+
+  - set timeout that subscribe after 10 seconds.<br/>
+
+  - see how much values the new subscriber get when it's start the action.<br/>
+  - stop all after 20 seconds (for debug and understand easily).
+  </p>
+

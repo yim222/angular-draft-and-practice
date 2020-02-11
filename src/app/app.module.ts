@@ -10,6 +10,9 @@ import { DraftAreaComponent } from './draft-area/draft-area.component';
 import { PromisesComponent } from './promises/promises.component';
 import { LearnServiceComponent } from './learn-service/learn-service.component';
 import { SubComponentAComponent } from './learn-service/sub-component-a/sub-component-a.component';
+import { SubscriptionComponent } from './learn-rx-js/rxjs-comps/subscription/subscription.component';
+import { LearnSubjectsComponent } from './learn-rx-js/rxjs-comps/learn-subjects/learn-subjects.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -19,12 +22,16 @@ import { SubComponentAComponent } from './learn-service/sub-component-a/sub-comp
     DraftAreaComponent,
     PromisesComponent,
     LearnServiceComponent,
-    SubComponentAComponent
+    SubComponentAComponent,
+    SubscriptionComponent,
+    LearnSubjectsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
