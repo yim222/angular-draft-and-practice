@@ -14,6 +14,12 @@ export class SubComponentAComponent implements OnInit {
               private serviceC: ServiceCService) { }
 
   ngOnInit() {
+
+    // this.serviceC.serviceProp1 = "new sub-comp value";
+
+    // this.serviceResult = this.serviceA.getLastResult();
+
+    console.log("SubComponentAComponent , this.serviceC.serviceProp1 = ,  ", this.serviceC.serviceProp1);
   }
 
 }

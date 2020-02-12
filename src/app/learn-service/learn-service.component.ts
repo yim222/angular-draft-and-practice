@@ -5,7 +5,9 @@ import {ServiceCService} from "./service-c.service";
 @Component({
   selector: 'app-learn-service',
   templateUrl: './learn-service.component.html',
-  styleUrls: ['./learn-service.component.css']
+  styleUrls: ['./learn-service.component.css'],
+  providers:  [ ServiceCService ]
+
 })
 export class LearnServiceComponent implements OnInit {
 
@@ -13,7 +15,7 @@ export class LearnServiceComponent implements OnInit {
   private y: number = 3;
   private serviceResult = 0;
 
-  constructor(private serviceA: ServiceAService
+  constructor(private serviceA: ServiceAService, private serviceC: ServiceCService
     // ,private serviceC: ServiceCService // uncomment it for seeing how it's not working.
   ) { }
 
@@ -30,7 +32,11 @@ export class LearnServiceComponent implements OnInit {
 
   ngOnInit() {
 
+    this.serviceC.serviceProp1 = "new value";
+
     // this.serviceResult = this.serviceA.getLastResult();
+
+    console.log("LearnServiceComponent , this.serviceC.serviceProp1 = ,  ", this.serviceC.serviceProp1);
   }
 
 }

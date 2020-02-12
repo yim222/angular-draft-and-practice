@@ -5,7 +5,10 @@ import { Injectable } from '@angular/core';
 // })
 export class ServiceCService {
 
+
   constructor() { }
+
+  public serviceProp1 = "default value";
 
   testServiceC():string{
     return "I am service C function";

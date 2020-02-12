@@ -13,6 +13,8 @@ import { SubComponentAComponent } from './learn-service/sub-component-a/sub-comp
 import { SubscriptionComponent } from './learn-rx-js/rxjs-comps/subscription/subscription.component';
 import { LearnSubjectsComponent } from './learn-rx-js/rxjs-comps/learn-subjects/learn-subjects.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { TemplateSyntaxComponent } from './template-syntax/template-syntax.component';
+import { SubTempComponent } from './template-syntax/sub-temp/sub-temp.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     LearnServiceComponent,
     SubComponentAComponent,
     SubscriptionComponent,
-    LearnSubjectsComponent
+    LearnSubjectsComponent,
+    TemplateSyntaxComponent,
+    SubTempComponent
   ],
   imports: [
     BrowserModule,

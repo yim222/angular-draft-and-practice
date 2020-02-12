@@ -6,6 +6,7 @@ import {PromisesComponent} from "./promises/promises.component";
 import {LearnServiceComponent} from "./learn-service/learn-service.component";
 import {SubscriptionComponent} from "./learn-rx-js/rxjs-comps/subscription/subscription.component";
 import {LearnSubjectsComponent} from "./learn-rx-js/rxjs-comps/learn-subjects/learn-subjects.component";
+import {TemplateSyntaxComponent} from "./template-syntax/template-syntax.component";
 
 
 const routes: Routes = [
@@ -14,7 +15,9 @@ const routes: Routes = [
   { path: 'promises', component: PromisesComponent},
   { path: 'services', component: LearnServiceComponent},
   { path: 'subscription', component: SubscriptionComponent },
-  { path: 'subjects', component: LearnSubjectsComponent }
+  { path: 'subjects', component: LearnSubjectsComponent },
+  { path: 'template-syntax', component: TemplateSyntaxComponent }
+
 
 
 

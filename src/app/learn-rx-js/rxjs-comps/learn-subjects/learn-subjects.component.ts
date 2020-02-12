@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {BehaviorSubject, ConnectableObservable, from, interval, Subject} from "rxjs";
+import {AsyncSubject, BehaviorSubject, ConnectableObservable, from, interval, Observable, Subject} from "rxjs";
 import {ReplaySubject} from "rxjs";
-import {multicast, refCount, tap} from "rxjs/operators";
+import {multicast, refCount, takeUntil, tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-learn-subjects',
@@ -19,7 +19,25 @@ export class LearnSubjectsComponent implements OnInit {
     // this.do2();
     //this.do3WithRefCount();
     // this.do4BeahviorSubject();
-    this.do5WithRegular();
+    // this.do5WithRegular();
+    // this.do6WithReplaySubject();
+    this.doDraftiTries();
+
+
+    let regularSubj = new Subject();
+    let behaviorSubj = new BehaviorSubject(0);
+    let replaySubj = new ReplaySubject(3);
+    let asyncSubj = new AsyncSubject();
+
+
+
+    // this.do7WithSubjectParam(behaviorSubj);
+
+
+
+
+
+
 
     //important to rememeber ***
     // console.log("Clone object on JS ");
@@ -283,7 +301,9 @@ export class LearnSubjectsComponent implements OnInit {
   do5WithRegular(){
     console.log("In regualr state the new subscriber will read all the old values. ")
     //create the subject
-    let subj1 = new ReplaySubject(4);
+    let subj1 = new Subject();
+    // let subj1 = new ReplaySubject(4);
+
 
     //Subscribe one subscriber.
     subj1.subscribe({
@@ -299,6 +319,7 @@ export class LearnSubjectsComponent implements OnInit {
     //set timeout that subscribe another subscriber  after 10 seconds.
     setTimeout(
       ()=>{
+        console.log("Subscribing to the subject the new subscriber");
         subj1.subscribe({
           next:(v)=>console.log("Subscribetr B , val = ", v)
         })
@@ -316,8 +337,8 @@ export class LearnSubjectsComponent implements OnInit {
     );
   }
 
-
-  doExampleForTest(){
+  do6WithReplaySubject(){
+    console.log("Replay Subject demo ")
     //create the subject
     let subj1 = new ReplaySubject(4);
 
@@ -328,13 +349,90 @@ export class LearnSubjectsComponent implements OnInit {
 
     //define interval that doing next. each 3 seconds
     let counter = 0;
-    setInterval(()=>{
+    let interval1 = setInterval(()=>{
       subj1.next(counter++)
     }, 3000);
 
     //set timeout that subscribe another subscriber  after 10 seconds.
     setTimeout(
       ()=>{
+        console.log("Subscribing to the subject the new subscriber");
+        subj1.subscribe({
+          next:(v)=>console.log("Subscribetr B , val = ", v)
+        })
+      }, 10000);
+
+    //see how much values the new subscriber get when it's start the action.
+
+    //stop all after 20 seconds (for debug and understand easily
+    let interval2;
+    let subj2 = new ReplaySubject(4, 2000);
+
+    setTimeout(
+      ()=>{
+        subj1.unsubscribe();
+        clearInterval(interval1)
+        console.log("Now See if U define a 'time window' that will exclude the values that outside of that " +
+          "\nHere I 'll do the replaySubject with 4 values, in last 2 second. it's emit value each 0.7 so in 2 second u have only 2So it won't show all. " );
+        let counter2 = 100;
+        interval2 = setInterval(()=>{
+          subj2.next(counter2++)
+        }, 700);
+      },20000
+    );
+
+
+
+    //Subscribe one subscriber.
+    subj2.subscribe({
+      next:(v)=>console.log("Subscribetr A to subj2  , val = ", v)
+    });
+
+
+    setTimeout(
+      ()=>{
+        subj2.subscribe({
+          next:(v)=>console.log("Subscribetr B to subj2  , val = ", v)
+        });
+      }, 25000
+    );
+
+    //stop all after 20 seconds (for debug and understand easily
+    setTimeout(
+      ()=>{
+        console.log("Stop interval 2");
+        clearInterval(interval2)
+        subj1.unsubscribe();
+      },40000
+    );
+
+
+
+
+  }
+
+
+
+
+  do7WithSubjectParam(subj1: Subject<any>){
+    //create the subject
+    // let subj1 = new Subject();
+    console.log("By params - do7WithSubjectParam, typeof subject ? ", ( subj1.constructor.name))
+    //Subscribe one subscriber.
+    subj1.subscribe({
+      next:(v)=>console.log("Subscribetr A , val = ", v)
+    });
+
+    //define interval that doing next. each 3 seconds
+    let counter = 0;
+    let interval1  = setInterval(()=>{
+      subj1.next(counter++)
+    }, 3000);
+
+    //set timeout that subscribe another subscriber  after 10 seconds.
+    setTimeout(
+      ()=>{
+        console.log("Subscribing to the subject the new subscriber");
         subj1.subscribe({
           next:(v)=>console.log("Subscribetr B , val = ", v)
         })
@@ -345,10 +443,115 @@ export class LearnSubjectsComponent implements OnInit {
     //stop all after 20 seconds (for debug and understand easily
     setTimeout(
       ()=>{
+        clearInterval(interval1);
+        subj1.complete();
+        subj1.unsubscribe();
+        console.log("Interval stopped... ");
+      },20000
+    );
+  }
+
+  do8WithAsyncSubject(){
+    console.log("Async Subject demo ")
+    //create the subject
+    let subj1 = new AsyncSubject();
+
+    //Subscribe one subscriber.
+    subj1.subscribe({
+      next:(v)=>console.log("Subscribetr A , val = ", v)
+    });
+
+    //define interval that doing next. each 3 seconds
+    let counter = 0;
+    let interval1 = setInterval(()=>{
+      subj1.next(counter++)
+    }, 3000);
+
+    //set timeout that subscribe another subscriber  after 10 seconds.
+    setTimeout(
+      ()=>{
+        console.log("Subscribing to the subject the new subscriber");
+        subj1.subscribe({
+          next:(v)=>console.log("Subscribetr B , val = ", v)
+        })
+      }, 10000);
+
+    //see how much values the new subscriber get when it's start the action.
+
+    //stop all after 20 seconds (for debug and understand easily
+    let interval2;
+    let subj2 = new ReplaySubject(4, 2000);
+
+    setTimeout(
+      ()=>{
+        subj1.unsubscribe();
+        clearInterval(interval1);
+      },20000
+    );
+  }
+
+
+  doExampleForTest(){
+    //create the subject
+    let subj1 = new Subject();
+
+    //Subscribe one subscriber.
+    subj1.subscribe({
+      next:(v)=>console.log("Subscribetr A , val = ", v)
+    });
+
+    //define interval that doing next. each 3 seconds
+    let counter = 0;
+    let interval1 = setInterval(()=>{
+      subj1.next(counter++)
+    }, 3000);
+
+    //set timeout that subscribe another subscriber  after 10 seconds.
+    setTimeout(
+      ()=>{
+        console.log("Subscribing to the subject the new subscriber");
+        subj1.subscribe({
+          next:(v)=>console.log("Subscribetr B , val = ", v)
+        })
+      }, 10000);
+
+    //see how much values the new subscriber get when it's start the action.
+
+    //stop all after 20 seconds (for debug and understand easily
+    setTimeout(
+      ()=>{
+        clearInterval(interval1);
         subj1.unsubscribe();
       },20000
     );
   }
+
+  doDraftiTries(){
+    let intervalTo = new Observable<true>();
+    console.log("Wrapping subject in observable");
+    let obs1 = interval(3000).pipe(
+    );
+    let subj1 = new Subject();
+   let subscription1 =  obs1.subscribe(subj1);
+    subj1.subscribe({
+      next:((v)=>{
+        console.log("Subscriber A ", v);
+      })
+    })
+    subj1.subscribe({
+      next:((v)=>{
+        console.log("Subscriber B ", v);
+      })
+    })
+    setTimeout(()=>{
+
+      console.log("Stopping action");
+      subscription1.unsubscribe();
+    },
+      10000)
+  }
+
+
 
 
   func1(val){

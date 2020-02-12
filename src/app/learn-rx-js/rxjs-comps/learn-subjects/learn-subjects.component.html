@@ -30,17 +30,28 @@ Maybe it's right on just value observable or like that. Need to understand in th
 <p>Replay subject - it's like the behavior that return the last, but you can also define to it how much old values to return. <br/>
 See the function example, that when the other subscriber subscribe it's return some of the old values. </p>
 
+<h3>Async Subject</h3>
+<p>Async subject - it's happen only when complete and only last  <br/>
+  See the function example, that when the other subscriber subscribe it's return some of the old values. </p>
 
-<h3>Use case</h3>
+
+<h3>Use Case</h3>
 <p>Maybe for understand the differences between the subject types do the following steps : <br/>
-  - Create the subject <br/>
-  - Define interval that doing next. each 3 seconds<br/>
+- Create the subject <br/>
+- Define interval that doing next. each 3 seconds<br/>
 
-  - Subscribe one subscriber.<br/>
+- Subscribe one subscriber.<br/>
 
-  - set timeout that subscribe after 10 seconds.<br/>
+- set timeout that subscribe after 10 seconds.<br/>
 
-  - see how much values the new subscriber get when it's start the action.<br/>
-  - stop all after 20 seconds (for debug and understand easily).
-  </p>
+- see how much values the new subscriber get when it's start the action.<br/>
+- stop all after 20 seconds (for debug and understand easily).
+</p>
+
+
+<h3>Conclusion</h3>
+<p>Subject is like observable which U can subscribe to it many subscriber.
+  U trigger the event by next, and U can wrap it with other observable.
+</p>
+
 
