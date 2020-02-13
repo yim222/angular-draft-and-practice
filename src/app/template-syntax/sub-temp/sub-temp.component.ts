@@ -11,6 +11,7 @@ export class SubTempComponent implements OnInit {
   constructor() { }
 
   prop1 = "lingar ";
+  prop2 = "Value2 "
 
   ngOnInit() {
   }

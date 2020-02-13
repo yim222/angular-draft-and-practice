@@ -7,7 +7,7 @@ export class ServiceBService {
 
   constructor() { }
 
-  testServiceB():string{
+  public testServiceB():string{
    return "I am service B function";
   }
 }

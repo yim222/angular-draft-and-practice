@@ -44,3 +44,32 @@ It's starting with attribute that seems work only on assets .
 <!--<img src="./img1.jpg" alt = "where I am ?" /> don't work -->
 
 <p>U here - https://angular.io/guide/template-syntax#expression-context </p>
+<p>WHen it's an attribute u can assign it by wrap the assigned attribute in [square brackets] and the prop name only in quotes
+<a [href] = "goglUrl" target = "_blank"> Like here - Google Url </a><br>
+  Or as before with write regular attribute and to interpolate the prop by curly brackets {{'{ } '    }} But U need to wrap it with "" too. U need to refer the brought data as
+  part of u write html. Without " "
+  <a href = "{{yahooUrl}}" target = "_blank">Like here - Yahoo link </a>
+</p>
+
+<p>Those expression don't necessary linked to the component's props. It's refer to things that are also in the template context, even though the're
+don't exist on the component directrly . </p>
+<p>Like in ng for here (this called "template input variable "   </p>
+
+<div *ngFor = "let food of foods">
+
+  <p>Hi </p>
+  <p>I am eating <span style = "color:mediumvioletred">{{food}}</span></p>
+
+</div>
+
+
+<p>Or as reference to input </p>
+
+write here <input #input1 /><br>
+see here (as H2) by refer the input {{input1.value}}
+
+<label>Type something:
+  <input #customerInput>{{customerInput.value}}
+</label>
+
+<h1>Goodbye Odysii</h1>

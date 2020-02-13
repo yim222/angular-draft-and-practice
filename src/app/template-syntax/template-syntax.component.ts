@@ -11,6 +11,9 @@ export class TemplateSyntaxComponent implements OnInit {
   imgUrl1 = 'assets/images1/img1.jpg';
   num1 = 2;
 
+  goglUrl = "https://www.google.com/";
+  yahooUrl = "https://www.yahoo.com/";
+  foods = ["Bread", "Egg", "Cheese"];
   constructor() { }
 
   ngOnInit() {
