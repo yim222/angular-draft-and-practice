@@ -1,0 +1,18 @@
+<div id ="main-area">
+
+  <p>sub-component-a works!</p>
+
+  <h4>Service last result = {{serviceA.getLastResult()}}</h4>
+
+  <h4>Here I am using service B - from service A: <br/>
+    {{serviceA.getServiceB()}}
+  </h4>
+
+
+  <h4>Here I am using service C - that only available on that component <br/>
+    {{serviceC.testServiceC()}}
+  </h4>
+</div>
+
+
+

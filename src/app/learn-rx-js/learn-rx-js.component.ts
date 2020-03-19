@@ -4,10 +4,11 @@ import {a} from '../my-custom-config/readmeSrc/a';
 
 // import {Rx} from 'rxjs';
 // //npm install rxjs
-import {interval} from 'rxjs';
+import {interval, Subject} from 'rxjs';
 import { fromEvent, Observable, of } from 'rxjs';
 
 import {bufferCount, bufferWhen, delay, filter, scan, map} from "rxjs/operators";
+import {RxjsRoutingService} from "./rxjs-comps/rxjs-routing.";
 // import * as Rx from 'rxjs/Rx';
 
 @Component({
@@ -19,7 +20,7 @@ export class LearnRxJSComponent implements OnInit {
 
   private configVar = null;
   private testCondition = true;
-  constructor() {
+  constructor(routingService: RxjsRoutingService) {
 
     const observable = new Observable(subscriber => {
       subscriber.next(1);
@@ -284,6 +285,7 @@ export class LearnRxJSComponent implements OnInit {
     observable2.subscribe((x)=>console.log("show the value on the subscribe :", x))
 
 
+
     const source2 = of("apple", "Banana", "Tapuz");
     // debugger;
     console.log("see here how I pass some maps (each get the previous value of the function ");
@@ -302,7 +304,7 @@ export class LearnRxJSComponent implements OnInit {
       console.log("subscriber = ", subscriber);
     });
 
-    let source3 = of (1000, 30 , 50 );      debugger;
+    let source3 = of (1000, 30 , 50 );
 
     source3.pipe(
       map(x => x *3),
@@ -313,6 +315,26 @@ export class LearnRxJSComponent implements OnInit {
     source3.subscribe(do1 =>
     setTimeout(()=> {console.log("hi new value " , do1)
       intervalTime += 2500;}, intervalTime));
+
+
+    /*
+    let obs11 = new Observable(x=>{
+      x.next("some value");
+    });
+    let sub = new Subject();
+    sub.subscribe(x=>{
+      console.log("hi.");
+      sub.next(x=>{
+        "some value subject";
+        x.next("don't get it");
+        x.error("what's goung");
+        x.complete("sdasd");
+
+      });
+      sub.error("error ??? ")
+    })
+    sub.next("jjj");
+    */
   }
 
   ngAfterViewChecked(){

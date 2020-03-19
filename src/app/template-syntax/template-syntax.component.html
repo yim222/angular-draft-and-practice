@@ -1,0 +1,75 @@
+<p>template-syntax works!</p>
+<h1>Studying about the html template syntax in Angular </h1>
+<h4>Source to the content : </h4>
+<p>https://angular.io/guide/template-syntax</p>
+
+<h4>Live example:</h4>
+<p>https://stackblitz.com/angular/jlkybygodqx?file=src%2Fapp%2Fapp.component.html</p>
+
+
+<p>All HTML tags is valid in Angular template  </p>
+<p>Script is the only unvalid HTML tag in Angular template ( I Am putting here below - see ) don't throw nothing</p>
+
+<script src = "mysrc.js"></script>
+
+<p>"Some legal HTML doesn't make much sense in a template. The '<'html'>'', '<'body'>', and '<'base'>' elements have no useful role. Pretty much everything else is fair game.
+
+"</p>
+
+<p>Interpolation - לשרבב  - the process of the double '}' that insert the NG props into template . Incorporate  - to mergae - לאחד , the merge of the model data with the view. </p>
+<p>It's the link of the properties and other values of the component to the template. </p>
+<p>They said that U can config it with other then double wrap  {{"\{{   \}\}" }}</p>
+
+<p>This is child component with other interpolation chars : </p>
+<app-sub-temp></app-sub-temp>
+<!--<p>Unexpected character "EOF" (Do you have an unescaped "{" in your template? Use "{{ '{' }}") to escape it.) </p>-->
+
+<p> {{"\{{   \}\}" }}   </p>
+
+<p >Insert the interpolation into the tag attrubute too, not only the element content . See this image </p>
+
+<img src='./assets/img1.jpg' alt = 'imageDescription'>
+
+
+<img src="{{imgUrl1}}" alt = 'imageDescription'>
+
+<img src="./img1.jpg" alt = "where I am ?" />
+
+<p>In default all the imgs src (seeme to me ) , is start from assets (I think  ) - NOT <br/>
+
+It's starting with attribute that seems work only on assets .
+</p>
+
+<!--<p>Number  = {{num1++}}</p> - won't work because side affect operator.-->
+<!--<img src="./img1.jpg" alt = "where I am ?" /> don't work -->
+
+<p>U here - https://angular.io/guide/template-syntax#expression-context </p>
+<p>WHen it's an attribute u can assign it by wrap the assigned attribute in [square brackets] and the prop name only in quotes
+<a [href] = "goglUrl" target = "_blank"> Like here - Google Url </a><br>
+  Or as before with write regular attribute and to interpolate the prop by curly brackets {{'{ } '    }} But U need to wrap it with "" too. U need to refer the brought data as
+  part of u write html. Without " "
+  <a href = "{{yahooUrl}}" target = "_blank">Like here - Yahoo link </a>
+</p>
+
+<p>Those expression don't necessary linked to the component's props. It's refer to things that are also in the template context, even though the're
+don't exist on the component directrly . </p>
+<p>Like in ng for here (this called "template input variable "   </p>
+
+<div *ngFor = "let food of foods">
+
+  <p>Hi </p>
+  <p>I am eating <span style = "color:mediumvioletred">{{food}}</span></p>
+
+</div>
+
+
+<p>Or as reference to input </p>
+
+write here <input #input1 /><br>
+see here (as H2) by refer the input {{input1.value}}
+
+<label>Type something:
+  <input #customerInput>{{customerInput.value}}
+</label>
+
+<h1>Goodbye Odysii</h1>

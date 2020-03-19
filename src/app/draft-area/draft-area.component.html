@@ -1,4 +1,79 @@
 <p>draft-area works!</p>
+<h1>check</h1>
 <h1>Make here trying and playing that u don't (or before u) want to save </h1>
 <h2>Amm.. </h2>
-<p>Connect to project</p>
+<h3>Some Bootstrap tryings.... </h3>
+
+
+
+<div class="row mx-md-n5">
+  <div class="col px-md-5"><div class="px-3 border bg-light">Custom column padding</div></div>
+  <div class="col px-md-5"><div class="p-3 border bg-light">Custom column padding</div></div>
+
+</div>
+<h3>service = {{s.x}}</h3>
+
+<h3>Do something  = {{s.doSomething()}}</h3>
+
+
+<h2>Under stanad formControl</h2>
+
+<p>From here  : https://angular.io/guide/reactive-forms</p>
+<p>It like the thing of form flow at react . </p>
+
+
+
+<p><i>This is Reactive  form :</i> </p>
+
+  <label>Field 1: </label><br/>
+  <input value = {{inputValue1}} [formControl] = "inputControl"/>
+
+<p>inputControl.value = {{inputControl.value}}</p>
+
+  <p>Input value field : {{inputValue1}}</p>
+
+<p><i>This is template-driven  form :</i> </p>
+<label>Field 2: </label><br/>
+
+<input value ="write something " [(ngModel)]="inputSimpleControl" />
+
+
+<p>Input value field : {{inputSimpleControl}}</p>
+
+<p>Here is input that works without form control. Press enter then see the value. </p>
+<input #box (keyup.enter)="onEnter(box.value)">
+<p>Enter then value : {{value}}</p>
+
+<p>When U need to do an event depend something, just look for the events list that Angular offer.</p>
+
+
+<p>OnChange without form control<br>It’s working well, just the on change happen not on each type, but when you click outside the input. <br>
+For other things use key event </p>
+<input #box2 (keyup)="onChange1(box2.value)">
+
+<p>this is value : {{value2}}</p>
+
+<p>This is what you need about user input :
+<a href ="https://angular.io/guide/user-input">Link </a>
+ see there the basics. Then go forward to understand form control.
+
+And you must study this :<br>https://angular.io/guide/template-syntax
+</p>
+
+
+<p>With template-reference-var U can directly take the elment value  </p>
+<input #lingar1 (keyup)="0">
+<p>{{lingar1.value}}</p>
+
+
+
+<p>Some tryings </p>
+<input (keyup)="onKey($event)">
+<p>{{values3}}</p>
+
+<h4>כדי להתרענן – תעשה כפתור אחד , שדרך נושא אחד, מפעיל הרבה נרשמים . תעזר בחומר שכתבת. </h4>
+
+<button (click)="startObservable()">START OBSERVABLE</button>
+
+<p>Seems that u cant manually trigger observable, U need to connect it to an event. For shoot and trigger event, U can use in subjects . </p>
+

@@ -1,0 +1,50 @@
+<p>learn-service works!</p>
+
+<h2>x = {{x}}</h2>
+
+<h2>y = {{y}}</h2>
+
+<h3>Sum = {{x+y}}</h3>
+
+<h4>Last service result = {{serviceA.getLastResult()}}</h4>
+
+value :
+<input (keyup)="onChange($event)"  >
+<br/>
+<button (click)="calcAndSave()" >Save Result </button>
+
+
+<p>
+  This is sub-component-a
+</p>
+
+<app-sub-component-a></app-sub-component-a>
+
+<p>All the using in the constructor of components isn't happening like in classic executional programming, with initiating objects. Here, it's happen by
+templates, so what you can inject into the constructor, is injectable items. And they are also, can be used inside constructors, and get in constructors only injectables. </p>
+
+<p>In other words - there is not case which you will need to instantiate a service that demand other components inside the code. If it's defined at the constructor, it will always
+initiated like that. </p>
+
+<p>What comes out of the above, is when you want to understand or use in Injectable service, you just need to inspect what is the chain of the injects items,
+But u don't need to worry about missing items, because when you will inject it to some item, it will come with all defined injectabels.(its parameters )</p>
+
+<p>I am trying to use in service c too, but it wouldn't work because it's doesn't injectable in all the application, and I didn't inserted it to this component (uncomment it)  </p>
+
+<p>Three major options to inject service : </p>
+
+<ol>
+  <li>Service (Global) level - By providein : root - will be accessible to all component that under the root (or something else that have defined ) </li>
+  <li>Module level - By providers in the module level - by the providers property - will be available to all which in the module. </li>
+  <li>Component level - By provider setting at @Component decorator  </li>
+
+
+
+</ol>
+
+
+<p>If you want to define that a service will be specific to the component and not singleton with others , so define it in the most low level - like component. (In module haven't yet
+test it, but I think it's the same. </p>
+<!--<h3>Service C: {{serviceC.testServiceC()}}</h3>-->
+
+
