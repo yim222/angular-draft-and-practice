@@ -16,6 +16,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { TemplateSyntaxComponent } from './template-syntax/template-syntax.component';
 import { SubTempComponent } from './template-syntax/sub-temp/sub-temp.component';
 import {MaterialModule} from "./material-module";
+import { DragDropNestedComponent } from './drag-drop-nested/drag-drop-nested.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {MaterialModule} from "./material-module";
     SubscriptionComponent,
     LearnSubjectsComponent,
     TemplateSyntaxComponent,
-    SubTempComponent
+    SubTempComponent,
+    DragDropNestedComponent
   ],
   imports: [
     BrowserModule,
