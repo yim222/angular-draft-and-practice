@@ -1,15 +1,17 @@
-<div>
+<div >
   <h1>Drag Drop Tree </h1>
   <h2>Nested tree recursive drag drop , cdk drop list inside cdk drag, angular material cdk </h2>
   <p>also try - children, ng-content, cdk tree</p>
   <div>
     <h3>Trying 1- by recursive component</h3>
    <h2> <a [routerLink]="['simple']">SImple draft  </a></h2>
+    <div cdkDropListGroup>
+      <div cdkDropList>
+        <app-recursive-comp  [dataArr]="providedData"></app-recursive-comp>
 
-    <div cdkDropList>
-      <app-recursive-comp  [dataArr]="providedData"></app-recursive-comp>
-
+      </div>
     </div>
+
 
   </div>
 

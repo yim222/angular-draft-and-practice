@@ -1,5 +1,108 @@
 <h1>Simple draft of DD </h1>
 <p>I u will wrap those both elments with cdk droplist it will be connected . </p>
+
+<h4>I think that the wrapping of drop inside drag is blocking the list from the wrapping content (like cdk group).<br />
+let's check it out - Seems that NOT - and it's indeed contain all the lists .  </h4>
+
+<p>This drags wrapping lists. and check if the list connected(reponse to the drag of each others. result - It <br />
+will react well when list is closing to the group. </p>
+<div cdkDropListGroup>
+  <div cdkDropList (cdkDropListDropped)="onDrop1($event)" >
+    <div cdkDrag [cdkDragData]="'drag1'">
+      I am drag 1
+      <div cdkDropList (cdkDropListDropped)="onDrop1($event)" class ="drop-list" >
+        some list...inside drag1
+        <div cdkDrag [cdkDragData]="'drag1-1'">
+          I am drag 1-1
+          <div cdkDropList (cdkDropListDropped)="onDrop1($event)" class ="drop-list" >
+            some list...inside
+            <div cdkDrag [cdkDragData]="'drag1-1-1'">
+              I am drag 1-1-1
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div cdkDrag>
+      I am drag 2
+      <div cdkDropList (cdkDropListDropped)="onDrop1($event)" class ="drop-list">
+        some list...inside
+        <div cdkDrag>
+          inner list drag 2
+        </div>
+      </div>
+    </div>
+    <div cdkDrag>
+      I am drag 3
+      <div cdkDropList (cdkDropListDropped)="onDrop1($event)" class ="drop-list">
+        some list...inside
+        <div cdkDrag>
+          inner list drag 3
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+</div>
+
+
+
+<h4>Now with wrapping drop not like above - result: it's react well and call the drop1 </h4>
+<div cdkDropListGroup>
+  <div cdkDropList (cdkDropListDropped)="onDrop1($event)">
+    some list...1
+    <div cdkDrag>
+      inner  drag 1
+    </div>
+  </div>
+  <div cdkDropList (cdkDropListDropped)="onDrop1($event)">
+    some list...2
+    <div cdkDrag>
+      inner  drag 2
+    </div>
+  </div>
+  <div cdkDropList (cdkDropListDropped)="onDrop1($event)">
+    some list...3
+    <div cdkDrag>
+      inner  drag 3
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1>Basic example </h1>
 <div cdkDrag>
   amm
   <div cdkDropList (cdkDropListDropped)="onDrop1($event)">

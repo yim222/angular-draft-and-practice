@@ -2,8 +2,13 @@
 <div *ngFor ="let data1 of dataArr" cdkDrag [cdkDragData]="data1.text" class = "main-area">
   <h2>Drag here ? {{data1.text}}</h2>
   <p>{{data1.subTexts.length}}</p>
-  <div *ngIf = "data1.subTexts.length > 0" cdkDropList [cdkDropListData]="data1.subTexts">
-   <h3>drop list here </h3>
-    <app-recursive-comp [dataArr]="data1.subTexts"></app-recursive-comp>
+  <div cdkDropListGroup>
+
+
+
+    <div *ngIf = "data1.subTexts.length > 0" cdkDropList [cdkDropListData]="data1.subTexts" (cdkDropListDropped)="onDrop1($event)">
+     <h3>drop list here </h3>
+      <app-recursive-comp [dataArr]="data1.subTexts"></app-recursive-comp>
+    </div>
   </div>
 </div>
