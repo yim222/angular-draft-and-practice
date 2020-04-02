@@ -15,6 +15,7 @@ import { LearnSubjectsComponent } from './learn-rx-js/rxjs-comps/learn-subjects/
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { TemplateSyntaxComponent } from './template-syntax/template-syntax.component';
 import { SubTempComponent } from './template-syntax/sub-temp/sub-temp.component';
+import {MaterialModule} from "./material-module";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { SubTempComponent } from './template-syntax/sub-temp/sub-temp.component'
     AppRoutingModule,
     AlertModule.forRoot(),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
