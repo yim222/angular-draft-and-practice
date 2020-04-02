@@ -7,6 +7,9 @@ import {LearnServiceComponent} from "./learn-service/learn-service.component";
 import {SubscriptionComponent} from "./learn-rx-js/rxjs-comps/subscription/subscription.component";
 import {LearnSubjectsComponent} from "./learn-rx-js/rxjs-comps/learn-subjects/learn-subjects.component";
 import {TemplateSyntaxComponent} from "./template-syntax/template-syntax.component";
+import {DragDropNestedComponent} from "./drag-drop-nested/drag-drop-nested.component";
+import {SimpleExamplesComponent} from "./drag-drop-nested/simple-examples/simple-examples.component";
+import {RecursiveCompComponent} from "./drag-drop-nested/recursive-comp/recursive-comp.component";
 
 
 const routes: Routes = [
@@ -16,7 +19,13 @@ const routes: Routes = [
   { path: 'services', component: LearnServiceComponent},
   { path: 'subscription', component: SubscriptionComponent },
   { path: 'subjects', component: LearnSubjectsComponent },
-  { path: 'template-syntax', component: TemplateSyntaxComponent }
+  { path: 'template-syntax', component: TemplateSyntaxComponent },
+  { path: 'dd-tree', component: DragDropNestedComponent, children:[
+      { path: '', component: DragDropNestedComponent},
+      {path:'simple', component: SimpleExamplesComponent},
+      {path: 'recursive', component: RecursiveCompComponent}
+    ] }
+
 
 
 

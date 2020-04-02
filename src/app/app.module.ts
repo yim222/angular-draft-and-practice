@@ -17,6 +17,8 @@ import { TemplateSyntaxComponent } from './template-syntax/template-syntax.compo
 import { SubTempComponent } from './template-syntax/sub-temp/sub-temp.component';
 import {MaterialModule} from "./material-module";
 import { DragDropNestedComponent } from './drag-drop-nested/drag-drop-nested.component';
+import { RecursiveCompComponent } from './drag-drop-nested/recursive-comp/recursive-comp.component';
+import { SimpleExamplesComponent } from './drag-drop-nested/simple-examples/simple-examples.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { DragDropNestedComponent } from './drag-drop-nested/drag-drop-nested.com
     LearnSubjectsComponent,
     TemplateSyntaxComponent,
     SubTempComponent,
-    DragDropNestedComponent
+    DragDropNestedComponent,
+    RecursiveCompComponent,
+    SimpleExamplesComponent
   ],
   imports: [
     BrowserModule,

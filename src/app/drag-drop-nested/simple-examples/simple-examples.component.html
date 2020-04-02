@@ -1,0 +1,28 @@
+<h1>Simple draft of DD </h1>
+<p>I u will wrap those both elments with cdk droplist it will be connected . </p>
+<div cdkDrag>
+  amm
+  <div cdkDropList (cdkDropListDropped)="onDrop1($event)">
+
+    some list...
+    <div cdkDrag>
+      amm2
+    </div>
+
+  </div>
+
+</div>
+
+
+<div cdkDrag>
+  arrr
+  <div cdkDropList (cdkDropListDropped)="onDrop1($event)" [cdkDropListData]="'kkk'">
+
+    some list...
+    <div cdkDrag>
+      arrr2
+    </div>
+
+  </div>
+
+</div>
