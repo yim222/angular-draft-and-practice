@@ -19,6 +19,7 @@ import {MaterialModule} from "./material-module";
 import { DragDropNestedComponent } from './drag-drop-nested/drag-drop-nested.component';
 import { RecursiveCompComponent } from './drag-drop-nested/recursive-comp/recursive-comp.component';
 import { SimpleExamplesComponent } from './drag-drop-nested/simple-examples/simple-examples.component';
+import { RecursiveComp2Component } from './drag-drop-nested/recursive-comp2/recursive-comp2.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { SimpleExamplesComponent } from './drag-drop-nested/simple-examples/simp
     SubTempComponent,
     DragDropNestedComponent,
     RecursiveCompComponent,
-    SimpleExamplesComponent
+    SimpleExamplesComponent,
+    RecursiveComp2Component
   ],
   imports: [
     BrowserModule,
