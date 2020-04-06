@@ -20,6 +20,9 @@ import { DragDropNestedComponent } from './drag-drop-nested/drag-drop-nested.com
 import { RecursiveCompComponent } from './drag-drop-nested/recursive-comp/recursive-comp.component';
 import { SimpleExamplesComponent } from './drag-drop-nested/simple-examples/simple-examples.component';
 import { RecursiveComp2Component } from './drag-drop-nested/recursive-comp2/recursive-comp2.component';
+import { LearnStyleComponent } from './learn-style/learn-style.component';
+import { BasicStyleComponent } from './learn-style/basic-style/basic-style.component';
+import { SCSSComponent } from './learn-style/scss/scss.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { RecursiveComp2Component } from './drag-drop-nested/recursive-comp2/recu
     DragDropNestedComponent,
     RecursiveCompComponent,
     SimpleExamplesComponent,
-    RecursiveComp2Component
+    RecursiveComp2Component,
+    LearnStyleComponent,
+    BasicStyleComponent,
+    SCSSComponent
   ],
   imports: [
     BrowserModule,
