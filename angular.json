@@ -25,14 +25,12 @@
             ],
             "styles": [
               "src/styles.css",
-               "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
           "configurations": {
-            "dev": {
-              
-            },
+            "dev": {},
             "production": {
               "fileReplacements": [
                 {
@@ -125,7 +123,6 @@
         }
       }
     },
-
     "lingar1": {
       "projectType": "application",
       "schematics": {},
@@ -247,7 +244,6 @@
     },
     "lingar2": {
       "projectType": "application",
-
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -257,7 +253,8 @@
             {
               "replace": "src/app/my-custom-config/readMeSrc/a.js",
               "with": "src/app/my-custom-config/a.js"
-            }],
+            }
+          ],
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "ready-built-files/lingar2",
@@ -368,6 +365,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "DraftAndPractice"
+    }
+  },
+  "defaultProject": "DraftAndPractice",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

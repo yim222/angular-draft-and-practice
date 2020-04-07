@@ -1,10 +1,72 @@
 <div>
   <p>scss works!</p>
   <h1>Saas - Scss</h1>
+  <h2><a href="https://sass-lang.com/guide" target ="_blank">Basics & Tutorial</a> </h2>
+  <h2><a href="https://sass-lang.com/documentation" target ="_blank">Full documentations- API , etc </a></h2>
   <p>Start with install :
     npm install  sass</p>
   <p>Saas is Scss just different syntax</p>
-  <p>If U didn't defined it on the project creation U need  do it as here
+  <p class = "color">If U didn't defined it on the project creation U need  do it as here
 
-    https://scotch.io/tutorials/using-sass-with-the-angular-cli</p>
+    https://scotch.io/tutorials/using-sass-with-the-angular-cli <br/>
+    U will need also to change the files Here he bring a code how to do it
+    https://medium.com/@ngubanethabo.ambrose/migrate-from-css-to-scss-stylesheets-for-existing-angular-application-d61f8061f5b7
+
+  </p>
+  <p>Amm I don't sure, it doesn't remove the css setting to me. </p>
+  <p>In angular U don't need to do the watch </p>
+  <p>Scss is syntax that similar to css, rather then Saas that is a little different. But seems them both availables. </p>
+  <p>U must to write the variables first. It's work by the order </p>
+  <h3>Variables - </h3>
+  <h4 class = "color">Change the $primary-color at the scss and see how it affects me </h4>
+  <p>* Here in angular - saas syntax isnt working </p>
+  <h3>Nested syntax  - </h3>
+  <div class = 'simpleCss'>
+    <p><br>I am P - see the codes for those nested in the simple css .  </p>
+    <div>I am Div </div>
+
+  </div>
+
+  <div class = 'scssStyle1'>
+    <p><br>I am P - with Scss nested code. Compare the codes to above, and see how it's simplify   </p>
+    <div>I am Div </div>
+
+  </div>
+  <h3>Imported style into file   - </h3>
+  <p>U can import to the file other file module, as partial. <br>
+  U write it _partialfile.scss
+  and put it on ?
+  <br>see this : </p>
+  <div class = "use-imported">I am style of imported style </div>
+  <div class = "inner-class1">AND U CAN use directly the imported file classes </div>
+  <p>I don't know how to import from relative path </p>
+
+  <h3>Calculation possibles ? YES</h3>
+  <p class ="calculated">I use calculated font-size </p>
+
+  <h3>Mixins are like functions </h3>
+
+  <h4 class = "useMixin">Class of mixin </h4>
+  <p>U can also use it in 3rd party frameworks like web-kit </p>
+
+  <h3>Extending - inheritance</h3>
+  <p>See here how this elements extends other parent class </p>
+  <div class = "child1">I use child who is like the parent</div>
+  <div class = "child2">I use child who changes the BGC </div>
+  <div class = "child3">I use child who extends two parent too, and changes the BGC </div>
+  <div class = "regularExtends">U can also extend regular class but it's can make confusing if it's nested. (see here) </div>
+
+  <h3>general css - u need to know this about using brackets to select attributes [name="myName"] </h3>
+  <p>https://www.sitepoint.com/css-selectors-attribute-selectors/</p>
+  <h3>Using operators</h3>
+  <div class = "calculated2">Here is some calculate </div>
+
+  <h3>Almost finished just how to import from directory</h3>
+  <p class = "use-relative-imported">i am using relative imported</p>
+  <p class = "inner-class2">i am using relative imported direct class - if it's the same as
+  another the last will be override</p>
+  <h4>So if U are doing right @rule import it's working now. </h4>
+
+
+
 </div>

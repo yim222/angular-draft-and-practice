@@ -1,0 +1,123 @@
+@use 'module1';//Rules must written first
+////@use '~scss-modules/module2';
+@use '../../../scss-modules/module2.scss';
+
+//@import '../../../scss-modules/module2.scss';
+
+
+// This is variables of scss
+$primary-color: blue;
+$fs: 16px;
+
+$num1: 12px;
+
+
+body{
+  color: palegoldenrod;
+}
+.color{
+  color: $primary-color;
+  font-size: $fs;
+}
+
+// nested things instead of
+
+.simpleCss p::before{
+  content: "Simple css container (generated code )";
+  color: green;
+}
+.simpleCss p {
+  content: "I wont be shown ";// content is used only with before :: and after
+  color: blueviolet;
+}
+
+
+.simpleCss div {
+
+  color: blueviolet;
+}
+
+.scssStyle1{
+  p::before{
+    content: "Scss container";
+  }
+  p{
+    color: brown;
+  }
+  div{
+    color: chocolate;
+  }
+}
+
+//Imported style
+.use-imported{
+  font-size: module1.$style1;
+}
+.use-relative-imported{
+  color: module2.$color1;
+}
+
+.calculated{
+  font-size: $num1 * 2;
+}
+
+@mixin doStyle1($prop, $bgc){
+  color: $prop;
+  background-color: $bgc;
+}
+.useMixin{
+  @include doStyle1(red, green);
+}
+
+// Like parent
+%parent1{
+  border: 1px solid black;
+  font-size:20px;
+  color:blue;
+  background-color: black;
+}
+
+// Like parent
+%parent2{
+  padding: 20px;
+}
+.child1{
+  @extend %parent1;
+
+}
+
+.child2{
+  @extend %parent1;
+  background-color: chocolate;
+
+}
+
+
+.child3{
+  @extend %parent1 , %parent2;
+  background-color: aqua;
+
+}
+.regularExtends{
+  @extend .useMixin;
+  font-size:20px;
+  color: black;
+
+}
+
+.calculated2{
+  border:1px solid black;
+  background-color: antiquewhite;
+  width: 300px / 960px ;//* 100%
+}
+
+
+
+/** is saas working ?  NO **/
+//
+//$font-stack:    Helvetica, sans-serif
+//$primary-color: #333
+//
+//body
+//font: 100% $font-stack
+//color: $primary-color
