@@ -20,10 +20,6 @@ export class RecursiveComp2Component implements OnInit {
   getIds(){
     let x = 6;
     // let arr = [...Array(20)].fill(10)
-
-
-
-
   }
 
   ngOnInit(): void {
