@@ -1,0 +1,131 @@
+.container-a::after{
+  content: "general container";
+
+}
+.container-a{
+  border: 2px solid red;
+  position: static;
+  overflow: scroll;
+}
+.container-rel{
+  border: 2px solid green;
+  position: relative;
+}
+
+
+@mixin set-position($prop){
+  position: $prop;
+  border: 2px solid black;
+  width: 200px;
+  padding:10px;
+  color: blue;
+}
+
+@mixin set-top($prop) {
+  top: $prop;
+}
+
+
+.static{
+  @include set-position(static);
+  @include set-top(40px);
+}
+
+
+.relative{
+  @include set-position(relative);
+  @include set-top(40px);
+
+}
+
+.absolute{
+  @include set-position(absolute);
+  @include set-top(40px);
+  right:40px;
+  color: red;
+}
+
+
+.sticky{
+  position: -webkit-sticky;
+  //Think it's for support other browser that use it
+  position: sticky;
+  @include set-position(sticky);
+  color: orange;
+
+  @include set-top(40px);
+  left: 200px;
+}
+
+.fixed{
+
+
+  @include set-position(fixed);
+  @include set-top(40px);
+
+}
+
+.parent1{
+  background: cadetblue;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 150px;
+
+}
+.child1{
+  background: pink;
+  width:150px;
+  height: 150px;
+  position: absolute;
+  top:-150px;
+
+}
+
+
+/*
+.parent {
+  border: 2px solid #0074d9;
+  color: #0074d9;
+  padding: 20px;
+}
+
+.element {
+  border: 1px dotted #000;
+  background-color: #eee;
+  padding: 20px;
+  color: #000;
+  position: relative;
+  margin-top: 10px;
+  animation: push ease 5s alternate infinite;
+  animation-delay: 1.5s;
+}
+
+*/
+
+//
+//@keyframes push {
+//  0% {
+//    left: 0;
+//    top: 0;
+//  }
+//
+//  50% {
+//    left: -100px;
+//    top: 100px;
+//  }
+//  100% {
+//    top: 50px;
+//    left: 50px;
+//  }
+//}
+//
+//body, html {
+//  height: 100%;
+//}
+//
+//body {
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//}

@@ -23,6 +23,7 @@ import { RecursiveComp2Component } from './drag-drop-nested/recursive-comp2/recu
 import { LearnStyleComponent } from './learn-style/learn-style.component';
 import { BasicStyleComponent } from './learn-style/basic-style/basic-style.component';
 import { SCSSComponent } from './learn-style/scss/scss.component';
+import { PositionUnderstandComponent } from './learn-style/position-understand/position-understand.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { SCSSComponent } from './learn-style/scss/scss.component';
     RecursiveComp2Component,
     LearnStyleComponent,
     BasicStyleComponent,
-    SCSSComponent
+    SCSSComponent,
+    PositionUnderstandComponent
   ],
   imports: [
     BrowserModule,

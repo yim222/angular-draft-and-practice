@@ -13,6 +13,7 @@ import {RecursiveCompComponent} from "./drag-drop-nested/recursive-comp/recursiv
 import {LearnStyleComponent} from "./learn-style/learn-style.component";
 import {BasicStyleComponent} from "./learn-style/basic-style/basic-style.component";
 import {SCSSComponent} from "./learn-style/scss/scss.component";
+import {PositionUnderstandComponent} from "./learn-style/position-understand/position-understand.component";
 
 
 const routes: Routes = [
@@ -31,7 +32,9 @@ const routes: Routes = [
   { path: 'learn-style', component: LearnStyleComponent, children:[
       // { path: '', component: LearnStyleComponent},
       {path:'simple', component: BasicStyleComponent},
-      {path: 'scss', component: SCSSComponent}
+      {path: 'scss', component: SCSSComponent},
+      {path: 'und-positions', component: PositionUnderstandComponent}
+
     ] }
 
 

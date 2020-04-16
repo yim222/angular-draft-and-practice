@@ -1,0 +1,67 @@
+<div class = "sticky">I am STICKY element
+  <p>For now it's working only on the global area</p>
+</div>
+<div class = "container-a">
+  <div class = "sticky">I am STICKY element
+    <p>For it will work - Note that a sticky element "sticks" to its nearest ancestor that has a "scrolling mechanism" (created when overflow is hidden, scroll, auto, or overlay)
+      (from the doc) </p>
+  </div>
+
+  <p><a href = "https://dzone.com/articles/css-position-relative-vs-position-absolute"
+        target="_blank">understand position manners</a></p>
+  <p>Official : https://developer.mozilla.org/en-US/docs/Web/CSS/position</p>
+<!--  <p>This is copied example from here : https://css-tricks.com/almanac/properties/p/position/</p>-->
+<!--  <div class="parent">-->
+<!--    Parent element-->
+<!--    <div class="element">Child element</div>-->
+<!--  </div>-->
+  <h2>Position property work together with the left, right etc. properties</h2>
+  <p>I am assign here - inside container a (with default static position all the properties)<br>
+  I give each element 40px top </p>
+</div>
+<div style = "height: 50px;"></div>
+<div class = "container-a">
+
+  <div class = "static">I am STATIC element
+    <p>As U see it's located by the order, and don't look on the top property</p>
+  </div>
+
+  <div class = "relative">I am RELATIVE element
+    <p>I can see that it's relative to the above element. (it's also cross below the container borders)</p>
+  </div>
+
+  <div class = "absolute">I am ABSOLUTE element
+    <p>I can see that it's refer to the top of the window, because the "static" parent doesn't count
+    positioned. If u do the container absolute it will reside inside. </p>
+  </div>
+  <p>U will find the absolute element at the top of the page (since this container is static so it's look on the page) </p>
+
+  <div class = "sticky">I am STICKY element
+    <p>For it will work - Note that a sticky element "sticks" to its nearest ancestor that has a "scrolling mechanism" (created when overflow is hidden, scroll, auto, or overlay)
+    (from the doc)<br>
+    <b>It doesn't work inside div, just on the first level element. Need to check it out</b><br>
+      Sticky - the element is positioned based on the user's scroll position.
+    </p>
+
+  </div>
+  <div style = "height:700px"></div>
+  <div class = "fixed">I am FIXED element
+    <p>
+      Fixed is always stick to the page. Stronger then sticky - seems.<br>
+      Fixed - the element is positioned related to the browser window.
+    </p>
+
+  </div>
+  <h3>Looks like there is no inheritance. Unlike they wrote in the above tutorial </h3>
+
+</div>
+
+<div style = "height:700px"></div>
+<h1>Child above parent </h1>
+<h2>Solution of no other choice</h2>
+<div class = "container-rel">
+  <div class = "parent1">I am parent
+    <div class = "child1">I am child</div>
+  </div>
+
+</div>
