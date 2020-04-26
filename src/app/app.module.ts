@@ -24,6 +24,7 @@ import { LearnStyleComponent } from './learn-style/learn-style.component';
 import { BasicStyleComponent } from './learn-style/basic-style/basic-style.component';
 import { SCSSComponent } from './learn-style/scss/scss.component';
 import { PositionUnderstandComponent } from './learn-style/position-understand/position-understand.component';
+import { DataFlowingComponent } from './data-flowing/data-flowing.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { PositionUnderstandComponent } from './learn-style/position-understand/p
     LearnStyleComponent,
     BasicStyleComponent,
     SCSSComponent,
-    PositionUnderstandComponent
+    PositionUnderstandComponent,
+    DataFlowingComponent
   ],
   imports: [
     BrowserModule,

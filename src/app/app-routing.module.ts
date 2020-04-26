@@ -14,6 +14,7 @@ import {LearnStyleComponent} from "./learn-style/learn-style.component";
 import {BasicStyleComponent} from "./learn-style/basic-style/basic-style.component";
 import {SCSSComponent} from "./learn-style/scss/scss.component";
 import {PositionUnderstandComponent} from "./learn-style/position-understand/position-understand.component";
+import {DataFlowingComponent} from "./data-flowing/data-flowing.component";
 
 
 const routes: Routes = [
@@ -34,6 +35,13 @@ const routes: Routes = [
       {path:'simple', component: BasicStyleComponent},
       {path: 'scss', component: SCSSComponent},
       {path: 'und-positions', component: PositionUnderstandComponent}
+
+    ] },
+  { path: 'data-flowing', component: DataFlowingComponent, children:[
+      { path: '', component: DataFlowingComponent},
+      // {path:'simple', component: BasicStyleComponent},
+      // {path: 'scss', component: SCSSComponent},
+      // {path: 'und-positions', component: PositionUnderstandComponent}
 
     ] }
 
