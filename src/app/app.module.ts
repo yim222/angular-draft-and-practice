@@ -25,6 +25,8 @@ import { BasicStyleComponent } from './learn-style/basic-style/basic-style.compo
 import { SCSSComponent } from './learn-style/scss/scss.component';
 import { PositionUnderstandComponent } from './learn-style/position-understand/position-understand.component';
 import { DataFlowingComponent } from './data-flowing/data-flowing.component';
+import { ItemComponent } from './data-flowing/item/item.component';
+import { ItemsComponent } from './data-flowing/items/items.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { DataFlowingComponent } from './data-flowing/data-flowing.component';
     BasicStyleComponent,
     SCSSComponent,
     PositionUnderstandComponent,
-    DataFlowingComponent
+    DataFlowingComponent,
+    ItemComponent,
+    ItemsComponent
   ],
   imports: [
     BrowserModule,
