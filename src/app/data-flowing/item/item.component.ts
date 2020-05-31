@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {bufferCount} from "rxjs/operators";
 
 @Component({
   selector: 'app-item',
@@ -12,12 +13,27 @@ export class ItemComponent implements OnInit {
 
   @Output()
   parentConnections = new EventEmitter();
+
+  @Output()
+  parentConnections3 = new EventEmitter();
+
+  clicked:any = 0;
   constructor() { }
 
 
   connectParent(){
     console.log("Connecting parent")
     this.parentConnections.emit(this.number);
+  }
+
+  connectParent2(){
+    this.parentConnections.pipe(bufferCount(3)).subscribe(val=>{
+      this.clicked = val;
+    })
+    // <--------- only added this line!
+  }
+  connectParent3(){
+    this.parentConnections3.emit(this.parentConnections);
   }
 
   connectParentError(){
