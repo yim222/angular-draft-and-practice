@@ -1,6 +1,70 @@
-<p>angular-pipes works!</p>
+<h1>Angular-Pipes </h1>
+<h2>The pipes of angular (Not the same as the pipes of rxjs - I think) is like good tools ,
+for generate in the display easily things and values, like upper cases, or currency symbol, converting to percentages...
+and more </h2>
+
+<h3>Basic </h3>
+<p>Very simple it can be written like that inside curely brackets (like angular values inside templates) : <br/>
+{{'{{' + 'myvalue | mypipe}' + '}'}}
+
+</p>
+
+<h3>References </h3>
+<p>Actually it pretty simple, U just need to be aware or look when U need something, and to understand how it's working. So this is list
+of some references . </p>
+<p>U should insert local, if u want different from the default of USA. </p>
+<p>Local code is refer to language-region. fr-CA = french Canada</p>
+<ul>
+  <li><a href = "https://angular.io/guide/pipes" target ="_blank">Pipes Guide (+live example) </a> </li>
+  <li><a href = "https://angular.io/api/core/Pipe" target ="_blank">Pipe API </a> </li>
+  <li><a href = "https://angular.io/api?type=pipe" target ="_blank">Pipes LIST (API)</a> </li>
+  <li><a href = "https://angular.io/guide/i18n#setting-up-the-locale-of-your-app" target ="_blank">Setting your locale</a> </li>
+  <li><a href = "https://en.wikipedia.org/wiki/ISO_4217" target ="_blank">List of currency codes</a> </li>
+  <li><a href = "https://github.com/angular/angular/tree/master/packages/common/locales" target ="_blank">List of Angular supported locals
+  (See also the basics at setting your locale)</a> </li>
+
+</ul>
+
+<h3>Check locale  see - it's the local of Israel: </h3>
+<p> {{currentDate | date :'fullDate' :'' : 'lin-he'}}</p>
+<p>this of france : </p>
+<p> {{currentDate | date :'fullDate' :'' : 'fr'}}</p>
+
+<h3>Todo - U here - learn and do as u can in 5 hours. From now 1 hour/ U here - (chaining https://angular.io/guide/pipes#chaining-pipes) </h3>
+
+<h4>Some examples</h4>
 <p>{{'angular-pipes works!' | uppercase}}</p>
 
 <p>{{0.2433465448797946464 | percent : '1.6-10': 'en-US'}}</p>
+
+<p>{{0.2433465448797946464 | percent : '1.6-10': 'en-US'}}</p>
+<p>{{222 | currency: 'ILS'}}</p>
+
+<h4>Pipe idea </h4>
+
+<p>In general pipes is prepared functionality of angular to convert(transform)  values, like date and currency in quick and simple way. <br/>
+  pipe operator ( | )</p>
+<h5>Example</h5>
+<p>Date without pipe : <b>{{currentDate}}</b></p>
+<p>Date WITH pipe : <b>{{currentDate | date}}</b> - see how the pipe cuts the trash </p>
+
+<p>Pipe  with  params (each of them separated by ':' : <b>{{currentDate | date: 'shortDate'}}</b> - The param change it to short-Date</p>
+<p>Pipe  with  parmater as component property: <b>{{currentDate | date: datePar1}}</b> - The param here is component property </p>
+<p>Pipe  with  Using my locale : <b>{{currentDate | date: 'shortDate': '': 'lin-he'}}</b> - It should be d/m/y like in Israell</p>
+
+<p>Not linked to pipes only but remember that U can use in typescript get - to format a variable (and use the value)
+X = {{x}}</p>
+
+<div>
+  <button (click)="toggleShort()">Toggle date </button>
+  <p>Pipe  with  parmater as component property: <b>{{currentDate | date: datePar2}}</b> - The param here is component property </p>
+
+</div>
+
+
+
+
+<h4></h4>
+
 
 <!--<p>B: {{0.243 | percent:'4.3-5':'fr-FR'}}</p>-->

@@ -29,6 +29,14 @@ import { ItemComponent } from './data-flowing/item/item.component';
 import { ItemsComponent } from './data-flowing/items/items.component';
 import { AngularPipesComponent } from './angular-pipes/angular-pipes.component';
 
+//Import locales
+import { registerLocaleData } from '@angular/common';
+import localeHe from '@angular/common/locales/he';
+import localFr from '@angular/common/locales/fr';
+registerLocaleData(localeHe, 'lin-he');//Here u register the locale U've imported.
+registerLocaleData(localFr);//default is fr
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +71,9 @@ import { AngularPipesComponent } from './angular-pipes/angular-pipes.component';
     FormsModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [
+    // {provide: myLocal, useValue: 'lin-he'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
