@@ -27,6 +27,7 @@ import { PositionUnderstandComponent } from './learn-style/position-understand/p
 import { DataFlowingComponent } from './data-flowing/data-flowing.component';
 import { ItemComponent } from './data-flowing/item/item.component';
 import { ItemsComponent } from './data-flowing/items/items.component';
+import { AngularPipesComponent } from './angular-pipes/angular-pipes.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ItemsComponent } from './data-flowing/items/items.component';
     PositionUnderstandComponent,
     DataFlowingComponent,
     ItemComponent,
-    ItemsComponent
+    ItemsComponent,
+    AngularPipesComponent
   ],
   imports: [
     BrowserModule,
