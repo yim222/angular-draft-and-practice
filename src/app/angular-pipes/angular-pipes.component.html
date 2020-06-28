@@ -5,7 +5,9 @@ and more </h2>
 
 <h3>Basic </h3>
 <p>Very simple it can be written like that inside curely brackets (like angular values inside templates) : <br/>
-{{'{{' + 'myvalue | mypipe}' + '}'}}
+  <b>{{'{{' + 'myvalue | mypipe}' + '}'}}</b>
+  <br/>
+  <b>If U need to provide params (which available in some pipes) U provide them with :'mypar'. See the docs... </b>
 
 </p>
 
@@ -64,7 +66,70 @@ X = {{x}}</p>
 
 
 
-<h4></h4>
+<h4>more 20 exmaples : </h4>
+<ul>
+  <li>
+    <h5>Async - for using with observable </h5>
+<!--    <p>Values : {{try1()| async}}</p>-->
+    <p>Values with async : {{observeable2| async}}</p>
+    <p>Values without async : {{observeable2}}</p>
 
+    <button (click)="try1()"> observable of random action </button>
+  </li>
+
+  <li>
+    <h5>Decimal  - for display decimal number like U set. Or by locale (number) </h5>
+   <p>Have two numbers. <br/>one with many decimal digits = <b>{{manydigits}}</b>,
+     <br/>second with no decimal = <b>{{noDigits}}</b>
+     <br/> third only decimal values  <b>{{decimal}}</b>
+    <br/>
+     U can set the format min.min-max. (it will always show integers)
+     <br/>
+     <b>So for example that : 1.2-5</b>
+     Will show on each :<br/>
+     Many digits = {{manydigits | number: dec1}}, <br/>
+     no decimal = {{noDigits | number: dec1}}<br/>
+     only decimal values  {{decimal | number: dec1}}<br/>
+
+     <b>This {{dec2}} will show on each :</b><br/>
+     Many digits = {{manydigits | number: dec2}}, <br/>
+     no decimal = {{noDigits | number: dec2}}<br/>
+     only decimal values  {{decimal | number: dec2}}<br/>
+
+    <b> Locale {{myLocale}} will show on each :</b><br/>
+     This {{dec2}} will show on each :
+     Many digits = {{manydigits | number: undefined :myLocale}}, <br/>
+     no decimal = {{noDigits  | number: undefined :myLocale}}<br/>
+     only decimal values  {{decimal  | number: undefined :myLocale}}<br/>
+    </p>
+  </li>
+  <li>
+    <h5>Json  - for convert object display to JSON (json) </h5>
+    <p>
+      This is object : <br/>
+      {{object1}}
+    <br/>
+      This is its JSON :<br/>
+      {{object1 | json}}
+    </p>
+  </li>
+  <li>Percent, Currency, date , upper/lower case - are shown above.</li>
+  <li>
+    Key value -
+    this generate the provided object / map to key and values
+
+    <div *ngFor="let item of object2 | keyvalue">
+      {{item.key}}:{{item.value}}
+    </div>
+    <br/>title case :
+    {{'two words' | titlecase}}
+    <br/>Slice - like slice array/string (only this doing only display:
+    string - {{str1}}<br/>
+    {{str1 | slice : 3 : 7}}
+
+  </li>
+</ul>
+
+<h1>Pipes finished </h1>
 
 <!--<p>B: {{0.243 | percent:'4.3-5':'fr-FR'}}</p>-->

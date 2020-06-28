@@ -28,7 +28,7 @@ import { DataFlowingComponent } from './data-flowing/data-flowing.component';
 import { ItemComponent } from './data-flowing/item/item.component';
 import { ItemsComponent } from './data-flowing/items/items.component';
 import { AngularPipesComponent } from './angular-pipes/angular-pipes.component';
-
+import { HttpClientModule }    from '@angular/common/http';
 //Import locales
 import { registerLocaleData } from '@angular/common';
 import localeHe from '@angular/common/locales/he';
@@ -69,7 +69,8 @@ registerLocaleData(localFr);//default is fr
     AlertModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   providers: [
     // {provide: myLocal, useValue: 'lin-he'}
