@@ -16,6 +16,7 @@ import {SCSSComponent} from "./learn-style/scss/scss.component";
 import {PositionUnderstandComponent} from "./learn-style/position-understand/position-understand.component";
 import {DataFlowingComponent} from "./data-flowing/data-flowing.component";
 import {AngularPipesComponent} from "./angular-pipes/angular-pipes.component";
+import {ExercisesComponent} from "./exercises/exercises.component";
 
 
 const routes: Routes = [
@@ -45,7 +46,9 @@ const routes: Routes = [
       // {path: 'und-positions', component: PositionUnderstandComponent}
 
     ] },
-  { path: 'ng-pipes', component: AngularPipesComponent}
+  { path: 'ng-pipes', component: AngularPipesComponent},
+  { path: 'exercises', component: ExercisesComponent}
+
 
 
 

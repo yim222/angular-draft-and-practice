@@ -33,6 +33,7 @@ import { HttpClientModule }    from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localeHe from '@angular/common/locales/he';
 import localFr from '@angular/common/locales/fr';
+import { ExercisesComponent } from './exercises/exercises.component';
 registerLocaleData(localeHe, 'lin-he');//Here u register the locale U've imported.
 registerLocaleData(localFr);//default is fr
 
@@ -61,7 +62,8 @@ registerLocaleData(localFr);//default is fr
     DataFlowingComponent,
     ItemComponent,
     ItemsComponent,
-    AngularPipesComponent
+    AngularPipesComponent,
+    ExercisesComponent
   ],
   imports: [
     BrowserModule,
