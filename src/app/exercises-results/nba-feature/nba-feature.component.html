@@ -2,3 +2,15 @@
 
 
 <h1>whats ? </h1>
+<div *ngFor="let item of example">
+  {{item}}
+</div>
+<div *ngFor ="let g of games">
+
+  <p class = 'home-team'>{{g.home_team.full_name}} - {{g.home_team_score}}</p>
+  <p>VS</p>
+  <p class = 'visitor-team'>{{g.visitor_team.full_name}} - {{g.visitor_team_score}}</p>
+
+  <p>---------------------------------------------------</p>
+
+</div>
