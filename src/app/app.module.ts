@@ -34,6 +34,8 @@ import { registerLocaleData } from '@angular/common';
 import localeHe from '@angular/common/locales/he';
 import localFr from '@angular/common/locales/fr';
 import { ExercisesComponent } from './exercises/exercises.component';
+import { ExercisesResultsComponent } from './exercises-results/exercises-results.component';
+import { NBAFeatureComponent } from './exercises-results/nba-feature/nba-feature.component';
 registerLocaleData(localeHe, 'lin-he');//Here u register the locale U've imported.
 registerLocaleData(localFr);//default is fr
 
@@ -63,7 +65,9 @@ registerLocaleData(localFr);//default is fr
     ItemComponent,
     ItemsComponent,
     AngularPipesComponent,
-    ExercisesComponent
+    ExercisesComponent,
+    ExercisesResultsComponent,
+    NBAFeatureComponent
   ],
   imports: [
     BrowserModule,

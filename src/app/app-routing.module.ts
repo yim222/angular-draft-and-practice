@@ -17,6 +17,8 @@ import {PositionUnderstandComponent} from "./learn-style/position-understand/pos
 import {DataFlowingComponent} from "./data-flowing/data-flowing.component";
 import {AngularPipesComponent} from "./angular-pipes/angular-pipes.component";
 import {ExercisesComponent} from "./exercises/exercises.component";
+import {ExercisesResultsComponent} from "./exercises-results/exercises-results.component";
+import {NBAFeatureComponent} from "./exercises-results/nba-feature/nba-feature.component";
 
 
 const routes: Routes = [
@@ -47,7 +49,11 @@ const routes: Routes = [
 
     ] },
   { path: 'ng-pipes', component: AngularPipesComponent},
-  { path: 'exercises', component: ExercisesComponent}
+  { path: 'exercises', component: ExercisesComponent},
+  { path: 'exercises-results', component: ExercisesResultsComponent, children: [
+      {path: 'nba-exercise', component: NBAFeatureComponent}
+    ]}
+
 
 
 
