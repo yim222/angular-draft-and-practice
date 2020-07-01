@@ -1,16 +1,37 @@
 <p>nba-feature works!</p>
+<p>U here - next time continue with the missions - U have added the initial list.
+  And show each game - done
+  // done -default season current,
+  //todo - 50 Results in a page.// User can switch seasons (until 1980),</p>
 
 
 <h1>whats ? </h1>
 <div *ngFor="let item of example">
   {{item}}
 </div>
-<div *ngFor ="let g of games">
+<h3>Team = {{checkInfce.id}} , {{checkInfce.full_name}}</h3>
+<!--<button>Switch the view</button>-->
+<!--<div *ngFor ="let g of games">-->
 
-  <p class = 'home-team'>{{g.home_team.full_name}} - {{g.home_team_score}}</p>
-  <p>VS</p>
-  <p class = 'visitor-team'>{{g.visitor_team.full_name}} - {{g.visitor_team_score}}</p>
+<!--  <p class = 'home-team'>{{g.home_team.full_name}} - {{g.home_team_score}}</p>-->
+<!--  <p>VS</p>-->
+<!--  <p class = 'visitor-team'>{{g.visitor_team.full_name}} - {{g.visitor_team_score}}</p>-->
 
-  <p>---------------------------------------------------</p>
+<!--  <p>-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
+
+<!--</div>-->
+
+
+<h1>Other version with models </h1>
+
+<p>Here why U need subject - because on one action U want to assign the values, and to get to other
+variable the total-page.</p>
+<div *ngFor ="let g of gamesModels ; let i = index">
+<h5>{{i+1}}</h5>
+<p class = 'home-team'>{{g.home_team.full_name}} - {{g.home_team_score}}</p>
+<p>VS</p>
+<p class = 'visitor-team'>{{g.visitor_team.full_name}} - {{g.visitor_team_score}}</p>
+
+<p>---------------------------------------------------</p>
 
 </div>
