@@ -20,7 +20,8 @@ export class NbaService {
   getData1(): Observable<any>{
     return this.http.get<any>('https://www.balldontlie.io/api/v1/games')
       .pipe(
-        tap(_ => console.log('fetched games'))
+        tap(_ => {
+          console.log('fetched games', _)})
       );
       // .subscribe(value => {
       //   console.log("value = " , value);
@@ -33,7 +34,10 @@ export class NbaService {
   getData2(): Observable<any>{
     return this.http.get<any>(this.url1)
       .pipe(
-        tap(_ => console.log('fetched games - getData2'))
+        tap(_ => {
+          console.log('fetched games - getData2 = ', _);
+          this.totalPages = _.meta.total_pages;
+        })
         // ,        map(res=>this.totalPages = res.meta.total_pages)
       );
 
