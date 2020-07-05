@@ -11,10 +11,13 @@ export class NbaService {
   url1: string = 'https://www.balldontlie.io/api/v1/games?per_page=50';
   totalPages: number;
   subj1: Subject<any> = new Subject();
+  obs1: Observable<any>;
 
 
   constructor(private http: HttpClient) {
     console.log("NbaService here");
+    this.obs1 = this.getData3ForSubject();
+    this.obs1.subscribe(this.subj1);
 
   }
   test():void{
