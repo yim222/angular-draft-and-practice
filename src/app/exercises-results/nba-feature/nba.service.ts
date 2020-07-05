@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable, Subject} from "rxjs";
+import {Observable, of, Subject} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {map, tap} from "rxjs/operators";
 import {Game1} from "./models";
@@ -10,18 +10,26 @@ import {Game1} from "./models";
 export class NbaService {
   url1: string = 'https://www.balldontlie.io/api/v1/games?per_page=50';
   totalPages: number;
-  subj1: Subject<any> = new Subject();
+  subj1: Subject<any> = new Subject<any>();
   obs1: Observable<any>;
 
 
   constructor(private http: HttpClient) {
     console.log("NbaService here");
     this.obs1 = this.getData3ForSubject();
-    this.obs1.subscribe(this.subj1);
+    // this.obs1.subscribe(this.subj1);
+    this.subj1.subscribe({
+      // next: this.getData3ForSubject
+      // // next: this.obs1,
+      next: (()=>{
+        this.test();
+      })
+    })
 
   }
-  test():void{
+  test():any{
     console.log("Test NBA Service ");
+    return of("test data");
   }
   getData1(): Observable<any>{
     return this.http.get<any>('https://www.balldontlie.io/api/v1/games')

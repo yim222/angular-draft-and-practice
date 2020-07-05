@@ -33,9 +33,12 @@ export class NBAFeatureComponent implements OnInit {
     // this.nbaService.subj1.next(this.nbaService.getData3ForSubject());// - Not working well
     // this.nbaService.getData3ForSubject()
     //   .subscribe( this.nbaService.subj1);
-    this.nbaService.obs1.subscribe();
-    console.log("next ? ");
-    this.nbaService.subj1.next();
+    // this.nbaService.obs1.subscribe();
+    setTimeout(()=>{
+      console.log("next ? ");
+      this.nbaService.subj1.next();
+    },3000);
+
 
 
   }
