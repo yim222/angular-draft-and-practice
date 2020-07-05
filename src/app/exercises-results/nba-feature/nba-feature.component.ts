@@ -34,7 +34,7 @@ export class NBAFeatureComponent implements OnInit {
     // this.nbaService.getData3ForSubject()
     //   .subscribe( this.nbaService.subj1);
     // this.nbaService.obs1.subscribe();
-    this.getGames3WithSubj();
+    this.getGames4WithSubj();
     // setTimeout(()=>{
     //   console.log("next ? ");
     //   this.nbaService.subj1.next();
@@ -72,6 +72,11 @@ export class NBAFeatureComponent implements OnInit {
       }
 
     )
+  }
+
+  getGames4WithSubj():void{
+    console.log("get games 4 - with subjects - by subscribe ... ");
+    this.nbaService.getData3ForSubject().subscribe(this.nbaService.subj1);
   }
   test1(val){
     console.log("NbaFeature.test 1. Val = " , val);
