@@ -30,9 +30,9 @@ export class NBAFeatureComponent implements OnInit {
     /***Trying do subject**/
     this.nbaService.subj1.subscribe(this.test1);
     this.nbaService.subj1.subscribe(this.test2);
-    this.nbaService.subj1.next(this.nbaService.getData3ForSubject());
-    // this.nbaService.subj1.next(this.nbaService.getData3ForSubject());
-
+    // this.nbaService.subj1.next(this.nbaService.getData3ForSubject());// - Not working well
+    this.nbaService.getData3ForSubject()
+      .subscribe( this.nbaService.subj1);
 
   }
   getGames():void{
