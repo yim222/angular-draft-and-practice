@@ -26,6 +26,14 @@ export class NBAFeatureComponent implements OnInit {
     // this.nbaService.getData1().subscribe();
     // this.getGames();
     this.getGames2();
+
+    /***Trying do subject**/
+    this.nbaService.subj1.subscribe(this.test1);
+    this.nbaService.subj1.subscribe(this.test2);
+    this.nbaService.subj1.next(this.nbaService.getData3ForSubject());
+    // this.nbaService.subj1.next(this.nbaService.getData3ForSubject());
+
+
   }
   getGames():void{
     this.nbaService.getData1()
@@ -48,6 +56,12 @@ export class NBAFeatureComponent implements OnInit {
         console.log("res ? " , res);
         this.gamesModels = res.data;
       })
+  }
+  test1(val){
+    console.log("NbaFeature.test 1. Val = " , val);
+  }
+  test2(val){
+    console.log("NbaFeature.test 2. Val = " , val);
   }
 
 }
