@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable, of, Subject} from "rxjs";
+import {BehaviorSubject, Observable, of, Subject} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {map, tap} from "rxjs/operators";
 import {Game1} from "./models";
@@ -11,6 +11,8 @@ export class NbaService {
   url1: string = 'https://www.balldontlie.io/api/v1/games?per_page=50';
   totalPages: number;
   subj1: Subject<any> = new Subject<any>();
+  behavSubj1:  BehaviorSubject<any> = new BehaviorSubject<any>(null);
+
   obs1: Observable<any>;
 
 
@@ -64,12 +66,6 @@ export class NbaService {
         tap(_ => {
           console.log('getData3ForSubject() - fetched games', _)})
       );
-    // .subscribe(value => {
-    //   console.log("value = " , value);
-    // })
-
-
-
   }
 
   /*

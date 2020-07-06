@@ -25,22 +25,29 @@ export class NBAFeatureComponent implements OnInit {
     console.log("ngOnInit NBAFeature");
     // this.nbaService.getData1().subscribe();
     // this.getGames();
-    this.getGames2();
+    // this.getGames2();
 
     /***Trying do subject**/
-    this.nbaService.subj1.subscribe(this.test1);
-    this.nbaService.subj1.subscribe(this.test2);
-    // this.nbaService.subj1.next(this.nbaService.getData3ForSubject());// - Not working well
-    // this.nbaService.getData3ForSubject()
-    //   .subscribe( this.nbaService.subj1);
-    // this.nbaService.obs1.subscribe();
-    this.getGames4WithSubj();
-    // setTimeout(()=>{
-    //   console.log("next ? ");
-    //   this.nbaService.subj1.next();
-    // },3000);
+    // this.nbaService.subj1.subscribe(this.test1);
+    // this.nbaService.subj1.subscribe(this.test2);
+    // // this.nbaService.subj1.next(this.nbaService.getData3ForSubject());// - Not working well
+    // // this.nbaService.getData3ForSubject()
+    // //   .subscribe( this.nbaService.subj1);
+    // // this.nbaService.obs1.subscribe();
+    // this.getGames4WithSubj();
+    // // setTimeout(()=>{
+    // //   console.log("next ? ");
+    // //   this.nbaService.subj1.next();
+    // // },3000);
 
+    /**Trying behavior subject */
+    this.nbaService.behavSubj1.subscribe(this.test1);
+    this.nbaService.behavSubj1.subscribe(this.test2);
+    this.getGames5WithBehavSubj();
+    setTimeout(()=>{
+      console.log("behavSubj1.getValue() ? " , this.nbaService.behavSubj1.getValue());
 
+    },3000);
 
   }
   getGames():void{
@@ -77,6 +84,11 @@ export class NBAFeatureComponent implements OnInit {
   getGames4WithSubj():void{
     console.log("get games 4 - with subjects - by subscribe ... ");
     this.nbaService.getData3ForSubject().subscribe(this.nbaService.subj1);
+  }
+
+  getGames5WithBehavSubj():void{
+    console.log("get games 5 - with behavior subject - by subscribe ... ");
+    this.nbaService.getData3ForSubject().subscribe(this.nbaService.behavSubj1);
   }
   test1(val){
     console.log("NbaFeature.test 1. Val = " , val);
