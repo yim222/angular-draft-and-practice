@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NbaService} from "./nba.service";
 import {Game1, Team} from "./models";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-nba-feature',
@@ -13,7 +14,10 @@ export class NBAFeatureComponent implements OnInit {
   games: any[] ;
   // checkInfce: Team = {id : 8};
   checkInfce: Team = {id : 8, full_name: 'lingars '};
-  gamesModels: Game1[];
+  gamesModels: Game1[] ;
+  pages: number = 0;
+  myBehavSubj : BehaviorSubject<any> = new BehaviorSubject<any>(null);
+
 
   constructor(private nbaService: NbaService) {
     // this.a = nbaService;
@@ -25,14 +29,65 @@ export class NBAFeatureComponent implements OnInit {
     console.log("ngOnInit NBAFeature");
     // this.nbaService.getData1().subscribe();
     // this.getGames();
-    this.getGames2();
+    // this.getGames2();
 
     /***Trying do subject**/
-    this.nbaService.subj1.subscribe(this.test1);
-    this.nbaService.subj1.subscribe(this.test2);
-    // this.nbaService.subj1.next(this.nbaService.getData3ForSubject());// - Not working well
-    this.nbaService.getData3ForSubject()
-      .subscribe( this.nbaService.subj1);
+    // this.nbaService.subj1.subscribe(this.test1);
+    // this.nbaService.subj1.subscribe(this.test2);
+    // // this.nbaService.subj1.next(this.nbaService.getData3ForSubject());// - Not working well
+    // this.nbaService.getData3ForSubject()
+    //   .subscribe( this.nbaService.subj1);
+
+    /** Doing behavior **/
+    let bs = this.nbaService.behavSubj;
+    this.myBehavSubj.subscribe(
+      {
+        next: ((res)=>{//U need to ensure that it's not generate error otherwise it won't subscribe it for the next (unlike regular subject) .
+          if (res) {
+            this.getPages(res.meta);
+            this.test1(res)
+          }
+        }),
+        error:((er)=>{
+          console.log("get Pages error - ", er)
+        }),
+        complete:(()=>{
+          console.log("anyway - get pages complete");
+        })
+      }
+    );
+
+    this.myBehavSubj.subscribe(
+      {
+        next: ((res)=>{//U need to ensure that it's not generate error otherwise it won't subscribe it for the next (unlike regular subject) .
+          if (res) {
+            this.assignData(res);
+            // this.test1(res)
+          }
+        }),
+        error:((er)=>{
+          console.log("Assign data  error - ", er)
+        }),
+        complete:(()=>{
+          console.log("anyway - Assign data complete");
+        })
+      }
+    );
+    // this.myBehavSubj.subscribe(this.assignData);
+    /** this won't update the view :
+     *
+     *https://www.reddit.com/r/Angular2/comments/avlpz0/behaviorsubject_or_observable_stream_not_updating/
+     * hats happens because delete function its on ngOnInit, so only works when a template load for first time,
+     * try to put delete function outside ngOnInit and thats going to work
+     */
+    // setTimeout(()=>{
+    //   console.log("next ? ");
+    //   this.nbaService.getData3ForSubject()
+    //     .subscribe( this.nbaService.behavSubj);
+    // },3000);
+
+    this.getGames3WithBSubject();
+
 
   }
   getGames():void{
@@ -57,11 +112,31 @@ export class NBAFeatureComponent implements OnInit {
         this.gamesModels = res.data;
       })
   }
+
+  getGames3WithBSubject():void{
+    console.log("get games 3 - behavior subject  ")
+    this.nbaService.getData3ForSubject()
+      .subscribe(this.myBehavSubj );
+  }
   test1(val){
     console.log("NbaFeature.test 1. Val = " , val);
   }
   test2(val){
     console.log("NbaFeature.test 2. Val = " , val);
   }
+
+  getPages(meta):void{
+    console.log("getPages")
+    this.pages = meta.total_pages;
+  }
+  assignData(res): void{
+    console.log("assign data - " , res);
+
+    if(res){
+      this.gamesModels = res.data;
+    }
+    console.log("this.gamesModels" , this.gamesModels);
+  }
+
 
 }
