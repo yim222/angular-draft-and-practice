@@ -61,7 +61,8 @@ Right Now it's happen inside one observer. Inside tap pipe.
 <p>Here why U need subject - because on one action U want to assign the values, and to get to other
 variable the total-page.</p>
 <div *ngFor ="let g of gamesModels ; let i = index">
-<h5>{{i+1}}</h5>
+<h5>#{{i+1}}</h5>
+  <p>Date - {{g.date | date}} </p>
 <p class = 'home-team'>{{g.home_team.full_name}} - {{g.home_team_score}}</p>
 <p>VS</p>
 <p class = 'visitor-team'>{{g.visitor_team.full_name}} - {{g.visitor_team_score}}</p>

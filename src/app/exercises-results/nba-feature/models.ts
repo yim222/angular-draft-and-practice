@@ -1,5 +1,6 @@
 export interface Game1{
   id: number,
+  date: Date,
   home_team : Team,
   visitor_team: Team,
   home_team_score: number,
