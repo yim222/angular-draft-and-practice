@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {NbaService} from "./nba.service";
 import {Game1, Team} from "./models";
 import {BehaviorSubject} from "rxjs";
@@ -123,7 +123,12 @@ export class NBAFeatureComponent implements OnInit {
   getGames3WithBSubject(postfix?):void{
     console.log("get games 3 - behavior subject  ")
     this.nbaService.getData3ForSubject(postfix)
-      .subscribe(this.myBehavSubj );
+      //short-way-problem
+      //uncomment this below line, and U can see that although it's the same idea, this does'nt update the view - when season changed !
+      // .subscribe(this.myBehavSubj)
+      .subscribe((res)=>{
+        this.myBehavSubj.next(res);
+      } );
   }
   test1(val){
     console.log("NbaFeature.test 1. Val = " , val);
@@ -152,6 +157,7 @@ export class NBAFeatureComponent implements OnInit {
    // https://www.balldontlie.io/api/v1/games?page=5&per_page=60&seasons[]=1999
    //  this.nbaService.url1 +='&seasons[]='+this.season;
     this.getGames3WithBSubject(postfix);
+    // ChangeDetectorRef.detectChanges();
   }
 
 
