@@ -17,10 +17,16 @@ export class NBAFeatureComponent implements OnInit {
   gamesModels: Game1[] ;
   pages: number = 0;
   myBehavSubj : BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  season: string;
+  seasons: number[] = [];
+
 
 
   constructor(private nbaService: NbaService) {
     // this.a = nbaService;
+    for (let i = 2020 ; i >=1970 ; i--){
+      this.seasons.push(i);
+    }
   }
 
   ngOnInit(): void {
@@ -136,6 +142,12 @@ export class NBAFeatureComponent implements OnInit {
       this.gamesModels = res.data;
     }
     console.log("this.gamesModels" , this.gamesModels);
+  }
+
+  getWithSeason(){
+    console.log("Getting games from this season .");
+    //u need to generate https://www.balldontlie.io/api/v1/games?seasons[]=1999&page=5&per_page=60
+   // https://www.balldontlie.io/api/v1/games?page=5&per_page=60&seasons[]=1999
   }
 
 

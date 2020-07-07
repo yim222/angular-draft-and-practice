@@ -24,6 +24,34 @@ Right Now it's happen inside one observer. Inside tap pipe.
 <!--  <p>-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
 
 <!--</div>-->
+<!--<form action="/action_page.php">-->
+<!--  <label for="cars">Choose a car:</label>-->
+<!--  <select name="cars" id="cars">-->
+<!--    <option value="volvo">Volvo</option>-->
+<!--    <option value="saab">Saab</option>-->
+<!--    <option value="opel">Opel</option>-->
+<!--    <option value="audi">Audi</option>-->
+<!--  </select>-->
+<!--  <br><br>-->
+<!--  <input type="submit" value="Submit">-->
+<!--</form>-->
+  <p>season = {{season}}</p>
+  <label for="seasons">Choose a Season:</label><br/>
+  <select name="seasons" id="seasons" [(ngModel)]="season" (ngModelChange)="test1(season )">
+    <option
+      *ngFor = "let i of seasons "
+    >{{i}}</option>
+
+  </select>
+
+<!--<label for="seasons2">Choose a Season:</label><br/>-->
+<!--<select  >-->
+<!--  <option name="seasons2" id="seasons2" [(ngModel)]="season" (ngModelChange)="test1('changes2...'  + i)"-->
+<!--    *ngFor = "let i of seasons "-->
+<!--  >{{i}}</option>-->
+
+<!--</select>-->
+
 
 
 <h1>Other version with models </h1>
