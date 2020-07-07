@@ -48,9 +48,9 @@ export class NbaService {
 
 
   }
-  getData3ForSubject(): Observable<any>{
-    console.log("url = " , this.url1);
-    return this.http.get<any>(this.url1)
+  getData3ForSubject(postfix =''): Observable<any>{
+    console.log("url = " , this.url1+postfix);
+    return this.http.get<any>(this.url1+postfix)
       .pipe(
         tap(_ => {
           console.log('getData3ForSubject() - fetched games', _)})

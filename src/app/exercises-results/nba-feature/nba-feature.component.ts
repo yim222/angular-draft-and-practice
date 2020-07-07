@@ -120,9 +120,9 @@ export class NBAFeatureComponent implements OnInit {
       })
   }
 
-  getGames3WithBSubject():void{
+  getGames3WithBSubject(postfix?):void{
     console.log("get games 3 - behavior subject  ")
-    this.nbaService.getData3ForSubject()
+    this.nbaService.getData3ForSubject(postfix)
       .subscribe(this.myBehavSubj );
   }
   test1(val){
@@ -147,10 +147,11 @@ export class NBAFeatureComponent implements OnInit {
 
   getWithSeason(){
     console.log("Getting games from this season - ", this.season);
+    let postfix = '&seasons[]='+ this.season;
     //u need to generate https://www.balldontlie.io/api/v1/games?seasons[]=1999&page=5&per_page=60
    // https://www.balldontlie.io/api/v1/games?page=5&per_page=60&seasons[]=1999
-    this.nbaService.url1 +='&seasons[]='+this.season;
-    this.getGames3WithBSubject();
+   //  this.nbaService.url1 +='&seasons[]='+this.season;
+    this.getGames3WithBSubject(postfix);
   }
 
 
