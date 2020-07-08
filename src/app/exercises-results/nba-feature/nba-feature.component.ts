@@ -47,7 +47,7 @@ export class NBAFeatureComponent implements OnInit {
 
     /** Doing behavior **/
     let bs = this.nbaService.behavSubj;
-    this.myBehavSubj.subscribe(
+    this.nbaService.behavSubj.subscribe(
       {
         next: ((res)=>{//U need to ensure that it's not generate error otherwise it won't subscribe it for the next (unlike regular subject) .
           if (res) {
@@ -64,7 +64,7 @@ export class NBAFeatureComponent implements OnInit {
       }
     );
 
-    this.myBehavSubj.subscribe(
+    this.nbaService.behavSubj.subscribe(
       {
         next: ((res)=>{//U need to ensure that it's not generate error otherwise it won't subscribe it for the next (unlike regular subject) .
           if (res) {
@@ -127,7 +127,7 @@ export class NBAFeatureComponent implements OnInit {
       //uncomment this below line, and U can see that although it's the same idea, this does'nt update the view - when season changed !
       // .subscribe(this.myBehavSubj)
       .subscribe((res)=>{
-        this.myBehavSubj.next(res);
+        this.nbaService.behavSubj.next(res);
       } );
   }
   test1(val){
