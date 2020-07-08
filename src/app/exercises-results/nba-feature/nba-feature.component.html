@@ -9,6 +9,8 @@
 Right Now it's happen inside one observer. Inside tap pipe.
 </p>
 <h3>It didn't worked on the short way, not sure why </h3>
+<app-inner-test></app-inner-test>
+<app-pages-navigator></app-pages-navigator>
 <h1>whats ? </h1>
 <div *ngFor="let item of example">
   {{item}}
@@ -18,27 +20,6 @@ Right Now it's happen inside one observer. Inside tap pipe.
   <li> – short way in subject can makes a lot of problem. see inside short-way-problem</li>
 </ul>
 <h3>Team = {{checkInfce.id}} , {{checkInfce.full_name}}</h3>
-<!--<button>Switch the view</button>-->
-<!--<div *ngFor ="let g of games">-->
-
-<!--  <p class = 'home-team'>{{g.home_team.full_name}} - {{g.home_team_score}}</p>-->
-<!--  <p>VS</p>-->
-<!--  <p class = 'visitor-team'>{{g.visitor_team.full_name}} - {{g.visitor_team_score}}</p>-->
-
-<!--  <p>-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
-
-<!--</div>-->
-<!--<form action="/action_page.php">-->
-<!--  <label for="cars">Choose a car:</label>-->
-<!--  <select name="cars" id="cars">-->
-<!--    <option value="volvo">Volvo</option>-->
-<!--    <option value="saab">Saab</option>-->
-<!--    <option value="opel">Opel</option>-->
-<!--    <option value="audi">Audi</option>-->
-<!--  </select>-->
-<!--  <br><br>-->
-<!--  <input type="submit" value="Submit">-->
-<!--</form>-->
   <p>season = {{season}}</p>
   <label for="seasons">Choose a Season:</label><br/>
   <select name="seasons" id="seasons" [(ngModel)]="season" (ngModelChange)="getWithSeason()">

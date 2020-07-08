@@ -14,3 +14,16 @@ export interface Team{
 // {g.home_team.full_name}} - {{g.home_team_score}}</p>
 // <p>VS</p>
 // <p class = 'visitor-team'>{{g.visitor_team.full_name}} - {{g.visitor_team_score}}</p>
+export class PagesLine{
+  //start not needed U can get it with the current
+  //Here for example U did able to use initialization of class total, n last
+  // current  :number;
+  // start: number;
+  total: number;
+  n: number;
+  current: number;
+
+  constructor() {
+
+  }
+}

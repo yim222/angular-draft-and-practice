@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {map, tap} from "rxjs/operators";
+import {InnerTestComponent} from "../inner-test/inner-test.component";
 import {Game1} from "./models";
 
 @Injectable({
