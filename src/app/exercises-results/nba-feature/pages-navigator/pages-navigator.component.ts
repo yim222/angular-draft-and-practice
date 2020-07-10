@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, OnChanges, DoCheck} from '@angular/core';
 
 /**
  * Component pages navigator
@@ -15,14 +15,16 @@ import { Component, OnInit } from '@angular/core';
  *
  *
  */
+
+//Problem - do check on changes, noot working... The start is broken after the changes.
 @Component({
   selector: 'app-pages-navigator',
   templateUrl: './pages-navigator.component.html',
   styleUrls: ['./pages-navigator.component.css']
 })
 export class PagesNavigatorComponent implements OnInit {
-  total: number = 980;
-  current: number = 57;
+  total: number = 976;
+  current: number = 1;
   n: number = 10;
   start: number;
   pagesDisplay: string[] ;
@@ -30,6 +32,10 @@ export class PagesNavigatorComponent implements OnInit {
 
   ngOnInit(): void {
     this.generateList();
+  }
+  ngDoCheck():void{
+    console.log("Change...")
+
   }
   setStart(){
     // this.current = chosen;
@@ -59,9 +65,9 @@ export class PagesNavigatorComponent implements OnInit {
     //clean the list
     this.pagesDisplay = [];
     //case it's reach the total :
-    if(this.current - this.start < this.n){
-      upperBound = this.current - this.start+1;
-    }
+    // if(this.current - this.start < this.n){
+    //   upperBound = this.current - this.start+1;
+    // }
     for(let i = this.start; i < this.start + upperBound; i ++){
       this.pagesDisplay.push(i+"");
     }
@@ -73,20 +79,30 @@ export class PagesNavigatorComponent implements OnInit {
     console.log("pages display = " , this.pagesDisplay);
   }
 
-  changePage(action: string):void{
+  changePage(action: any):void{
 
-    console.log("changePage(action) = " , action);
-
+    console.log("changePage(action) = " , action , !isNaN(+action));
+    if (!isNaN(+action)){
+      this.current = +action;
+      action = 'isNum';
+    }
     switch (action) {
       case  'start':
         this.current = 1;
         this.generateList();
         console.log("want to go to start");
         console.log("And ? ");
+        break;
       case  'last':
         this.current = this.total;
         this.generateList();
         console.log("want to go to last");
+        break;
+      case 'isNum'://if it's number
+        // this.current = +action;
+        console.log(" go to page " + action);
+        this.generateList() ;
+        break;
 
 
     }
