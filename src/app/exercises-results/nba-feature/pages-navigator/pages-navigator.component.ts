@@ -13,6 +13,10 @@ import {Component, OnInit, OnChanges, DoCheck} from '@angular/core';
  * - To make : handle to the actions : current, start,last, previous, next
  * - Handle consideration in the total (Not suppose to show greater then total). Current should not be more then total.
  *
+ * U HERE - next time :
+ * 1- DO the next and previous.
+ * 2- Check why the onChange startegy don't work.
+ * 3- Continue with the todo .
  *
  */
 
@@ -69,7 +73,11 @@ export class PagesNavigatorComponent implements OnInit {
     //   upperBound = this.current - this.start+1;
     // }
     for(let i = this.start; i < this.start + upperBound; i ++){
+      if (i > this.total){
+        break;
+      }
       this.pagesDisplay.push(i+"");
+
     }
 
     //Organize the list again.
