@@ -1,1 +1,9 @@
 <p>pages-navigator works!</p>
+
+<div>
+  <span
+  *ngFor ="let item of pagesDisplay"
+  >
+    <a href="" onclick="return false" [ngClass]="{'current': +item === current}" (click)="changePage(item)">{{item}}      </a>
+  </span>
+</div>
