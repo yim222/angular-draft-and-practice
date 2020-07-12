@@ -55,7 +55,9 @@ export class PagesNavigatorComponent implements OnInit {
   setStart(){
     // this.current = chosen;
     console.log("setStart()");
-    console.log("Current = " , this.current)
+    console.log("Current = " , this.current);
+    if (this.current > this.total)this.current=this.total;
+    else if(this.current < 1)this.current = 1;
     console.log( Math.floor(this.current/ this.n )* this.n);
     // this.start = this.current/this.n * this.n+ 1;
     if (this.current % this.n === 0){
