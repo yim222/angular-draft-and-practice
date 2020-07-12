@@ -1,4 +1,4 @@
-import {Component, OnInit, OnChanges, DoCheck, Input} from '@angular/core';
+import {Component, OnInit, OnChanges, DoCheck, Input, ViewChild} from '@angular/core';
 import {PagesNavOption} from "../models";
 import {NbaService} from "../nba.service";
 

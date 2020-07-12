@@ -20,6 +20,7 @@ export class NBAFeatureComponent implements OnInit {
   myBehavSubj : BehaviorSubject<any> = new BehaviorSubject<any>(null);
   season: string;
   seasons: number[] = [];
+  loaded = false;
 
 
 
@@ -87,12 +88,12 @@ export class NBAFeatureComponent implements OnInit {
      * hats happens because delete function its on ngOnInit, so only works when a template load for first time,
      * try to put delete function outside ngOnInit and thats going to work
     //  */
-    setTimeout(()=>{
-      console.log("timeout ? ");
-      // this.nbaService.getData3ForSubject()
-      //   .subscribe( this.nbaService.behavSubj);
-      this.totalPages = 500;
-    },5000);
+    // setTimeout(()=>{
+    //   console.log("timeout ? ");
+    //   // this.nbaService.getData3ForSubject()
+    //   //   .subscribe( this.nbaService.behavSubj);
+    //   this.totalPages = 500;
+    // },5000);
 
     this.getGames3WithBSubject();
 
@@ -129,6 +130,7 @@ export class NBAFeatureComponent implements OnInit {
       // .subscribe(this.myBehavSubj)
       .subscribe((res)=>{
         this.nbaService.behavSubj.next(res);
+        this.loaded = true;
       } );
   }
   test1(val){
@@ -159,6 +161,9 @@ export class NBAFeatureComponent implements OnInit {
    //  this.nbaService.url1 +='&seasons[]='+this.season;
     this.getGames3WithBSubject(postfix);
     // ChangeDetectorRef.detectChanges();
+  }
+  totalLoaded(){
+    return !isNaN(this.totalPages);
   }
 
 
