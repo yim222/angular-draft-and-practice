@@ -1,4 +1,5 @@
 import {Component, OnInit, OnChanges, DoCheck} from '@angular/core';
+import {PagesNavOption} from "../models";
 
 /**
  * Component pages navigator
@@ -28,7 +29,7 @@ import {Component, OnInit, OnChanges, DoCheck} from '@angular/core';
 })
 export class PagesNavigatorComponent implements OnInit {
   total: number = 976;
-  current: number = 1;
+  current: number = 36;
   n: number = 10;
   start: number;
   pagesDisplay: string[] ;
@@ -44,7 +45,7 @@ export class PagesNavigatorComponent implements OnInit {
   setStart(){
     // this.current = chosen;
     console.log("setStart()");
-
+    console.log("Current = " , this.current)
     console.log( Math.floor(this.current/ this.n )* this.n);
     // this.start = this.current/this.n * this.n+ 1;
     if (this.current % this.n === 0){
@@ -65,6 +66,7 @@ export class PagesNavigatorComponent implements OnInit {
   generateList(){
     this.setStart();
     let upperBound = this.n;
+    console.log("Start = " , this.start)
     //Generate the list by the start
     //clean the list
     this.pagesDisplay = [];
@@ -81,9 +83,9 @@ export class PagesNavigatorComponent implements OnInit {
     }
 
     //Organize the list again.
-    this.pagesDisplay.splice(0,0, '<<<','start');
-    this.pagesDisplay.push('...');
-    this.pagesDisplay.push('last');
+    this.pagesDisplay.splice(0,0, PagesNavOption.PREVIOUS, PagesNavOption.START);
+    this.pagesDisplay.push(PagesNavOption.NEXT);
+    this.pagesDisplay.push(PagesNavOption.LAST);
     console.log("pages display = " , this.pagesDisplay);
   }
 
@@ -95,22 +97,36 @@ export class PagesNavigatorComponent implements OnInit {
       action = 'isNum';
     }
     switch (action) {
-      case  'start':
+      case  PagesNavOption.START:
         this.current = 1;
         this.generateList();
         console.log("want to go to start");
         console.log("And ? ");
         break;
-      case  'last':
+      case  PagesNavOption.LAST:
         this.current = this.total;
         this.generateList();
         console.log("want to go to last");
+        break;
+      case PagesNavOption.NEXT:
+        console.log("next ... " ,  this.start + this.n);
+        this.current = this.start + this.n;
+
+        this.generateList() ;
+        break;
+      case PagesNavOption.PREVIOUS:
+        console.log("previous  ... " ,  this.start - 1);
+        this.current = this.start -1 ;
+
+        this.generateList() ;
         break;
       case 'isNum'://if it's number
         // this.current = +action;
         console.log(" go to page " + action);
         this.generateList() ;
         break;
+      default:
+        console.log("Default happening. ");
 
 
     }

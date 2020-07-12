@@ -27,3 +27,11 @@ export class PagesLine{
 
   }
 }
+
+export enum PagesNavOption {
+  //   this.pagesDisplay = ['<<<','start', '...', 'end'];
+  START = 'start' ,
+  LAST = 'last',
+  NEXT = '>>',
+  PREVIOUS = '<<'
+}
