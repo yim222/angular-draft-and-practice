@@ -86,12 +86,13 @@ export class NBAFeatureComponent implements OnInit {
      *https://www.reddit.com/r/Angular2/comments/avlpz0/behaviorsubject_or_observable_stream_not_updating/
      * hats happens because delete function its on ngOnInit, so only works when a template load for first time,
      * try to put delete function outside ngOnInit and thats going to work
-     */
-    // setTimeout(()=>{
-    //   console.log("next ? ");
-    //   this.nbaService.getData3ForSubject()
-    //     .subscribe( this.nbaService.behavSubj);
-    // },3000);
+    //  */
+    setTimeout(()=>{
+      console.log("timeout ? ");
+      // this.nbaService.getData3ForSubject()
+      //   .subscribe( this.nbaService.behavSubj);
+      this.totalPages = 500;
+    },3000);
 
     this.getGames3WithBSubject();
 
