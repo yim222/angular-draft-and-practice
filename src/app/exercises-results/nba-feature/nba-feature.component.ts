@@ -92,7 +92,7 @@ export class NBAFeatureComponent implements OnInit {
       // this.nbaService.getData3ForSubject()
       //   .subscribe( this.nbaService.behavSubj);
       this.totalPages = 500;
-    },3000);
+    },5000);
 
     this.getGames3WithBSubject();
 

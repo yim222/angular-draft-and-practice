@@ -1,5 +1,6 @@
 import {Component, OnInit, OnChanges, DoCheck, Input} from '@angular/core';
 import {PagesNavOption} from "../models";
+import {NbaService} from "../nba.service";
 
 /**
  * Component totalPages navigator
@@ -36,10 +37,16 @@ export class PagesNavigatorComponent implements OnInit {
   n: number = 10;
   start: number;
   pagesDisplay: string[] ;
-  constructor() { }
+  constructor(public nbaService: NbaService) { }
 
   ngOnInit(): void {
     this.generateList();
+    this.nbaService.behavSubj.subscribe((res)=>{
+      console.log("subscribe of page nav");
+      this.current = 1;
+      // this.total = res.meta.total_pages;
+      this.generateList();
+    } );
   }
   ngDoCheck():void{
     console.log("Change...")
