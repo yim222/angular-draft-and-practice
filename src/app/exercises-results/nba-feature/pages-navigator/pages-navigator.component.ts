@@ -1,11 +1,11 @@
-import {Component, OnInit, OnChanges, DoCheck} from '@angular/core';
+import {Component, OnInit, OnChanges, DoCheck, Input} from '@angular/core';
 import {PagesNavOption} from "../models";
 
 /**
- * Component pages navigator
+ * Component totalPages navigator
  * need :
- * total, current, n - (the number of the pages represent in a row)
- * pages-nav array
+ * total, current, n - (the number of the totalPages represent in a row)
+ * totalPages-nav array
  */
 
 /**
@@ -28,8 +28,11 @@ import {PagesNavOption} from "../models";
   styleUrls: ['./pages-navigator.component.css']
 })
 export class PagesNavigatorComponent implements OnInit {
-  total: number = 976;
+  @Input()
+  total: number ;
+  @Input()
   current: number = 36;
+  @Input()
   n: number = 10;
   start: number;
   pagesDisplay: string[] ;
@@ -86,7 +89,7 @@ export class PagesNavigatorComponent implements OnInit {
     this.pagesDisplay.splice(0,0, PagesNavOption.PREVIOUS, PagesNavOption.START);
     this.pagesDisplay.push(PagesNavOption.NEXT);
     this.pagesDisplay.push(PagesNavOption.LAST);
-    console.log("pages display = " , this.pagesDisplay);
+    console.log("totalPages display = " , this.pagesDisplay);
   }
 
   changePage(action: any):void{

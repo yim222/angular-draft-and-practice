@@ -15,7 +15,7 @@ export class NBAFeatureComponent implements OnInit {
   // checkInfce: Team = {id : 8};
   checkInfce: Team = {id : 8, full_name: 'lingars '};
   gamesModels: Game1[] ;
-  pages: number = 0;
+  totalPages: number = 0;
   //the subject should be from here
   myBehavSubj : BehaviorSubject<any> = new BehaviorSubject<any>(null);
   season: string;
@@ -59,7 +59,7 @@ export class NBAFeatureComponent implements OnInit {
           console.log("get Pages error - ", er)
         }),
         complete:(()=>{
-          console.log("anyway - get pages complete");
+          console.log("anyway - get totalPages complete");
         })
       }
     );
@@ -73,7 +73,7 @@ export class NBAFeatureComponent implements OnInit {
           }
         }),
         error:((er)=>{
-          console.log("Assign data  error - ", er)
+          console.error("Assign data  error - ", er)
         }),
         complete:(()=>{
           console.log("anyway - Assign data complete");
@@ -139,7 +139,7 @@ export class NBAFeatureComponent implements OnInit {
 
   getPages(meta):void{
     console.log("getPages")
-    this.pages = meta.total_pages;
+    this.totalPages = meta.total_pages;
   }
   assignData(res): void{
     console.log("assign data - " , res);
