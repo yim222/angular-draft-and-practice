@@ -139,10 +139,15 @@ export class PagesNavigatorComponent implements OnInit {
         break;
       default:
         console.log("Default happening. ");
-
-
     }
-
+    this.getNewData();
+  }
+  getNewData(){
+    let postfix = "&page="+this.current;
+    this.nbaService.getData3ForSubject(postfix).subscribe((res)=> {
+        this.nbaService.behavSubj.next(res);
+      }
+    );
   }
 
 }
