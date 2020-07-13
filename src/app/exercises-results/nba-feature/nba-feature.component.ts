@@ -47,8 +47,8 @@ export class NBAFeatureComponent implements OnInit {
     //   .subscribe( this.nbaService.subj1);
 
     /** Doing behavior **/
-    let bs = this.nbaService.behavSubj;
-    this.nbaService.behavSubj.subscribe(
+    let bs = this.nbaService.getDataSubject;
+    this.nbaService.getDataSubject.subscribe(
       {
         next: ((res)=>{//U need to ensure that it's not generate error otherwise it won't subscribe it for the next (unlike regular subject) .
           if (res) {
@@ -65,7 +65,7 @@ export class NBAFeatureComponent implements OnInit {
       }
     );
 
-    this.nbaService.behavSubj.subscribe(
+    this.nbaService.getDataSubject.subscribe(
       {
         next: ((res)=>{//U need to ensure that it's not generate error otherwise it won't subscribe it for the next (unlike regular subject) .
           if (res) {
@@ -91,7 +91,7 @@ export class NBAFeatureComponent implements OnInit {
     // setTimeout(()=>{
     //   console.log("timeout ? ");
     //   // this.nbaService.getData3ForSubject()
-    //   //   .subscribe( this.nbaService.behavSubj);
+    //   //   .subscribe( this.nbaService.getDataSubject);
     //   this.totalPages = 500;
     // },5000);
 
@@ -129,7 +129,8 @@ export class NBAFeatureComponent implements OnInit {
       //uncomment this below line, and U can see that although it's the same idea, this does'nt update the view - when season changed !
       // .subscribe(this.myBehavSubj)
       .subscribe((res)=>{
-        this.nbaService.behavSubj.next(res);
+        this.nbaService.getDataSubject.next(res);
+        this.nbaService.resetPagesNav.next();
         this.loaded = true;
       } );
   }
@@ -154,7 +155,7 @@ export class NBAFeatureComponent implements OnInit {
   }
 
   getWithSeason(){
-    console.log("Getting games from this season - ", this.season);
+    console.log("Getting games from this season - ", this.season, this.seasons);
     let postfix = '&seasons[]='+ this.season;
     //u need to generate https://www.balldontlie.io/api/v1/games?seasons[]=1999&page=5&per_page=60
    // https://www.balldontlie.io/api/v1/games?page=5&per_page=60&seasons[]=1999

@@ -10,9 +10,11 @@ import {Game1} from "./models";
 })
 export class NbaService {
   url1: string = 'https://www.balldontlie.io/api/v1/games?per_page=50';
+  lastUrl: string = "";
   totalPages: number;
   subj1: Subject<any> = new Subject();
-  behavSubj : BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  getDataSubject : BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  resetPagesNav: Subject<any> = new Subject<any>();
 
 
   constructor(private http: HttpClient) {
@@ -49,10 +51,11 @@ export class NbaService {
 
 
   }
-  getData3ForSubject(postfix =''): Observable<any>{
+  getData3ForSubject(postfix =''  ): Observable<any>{
     console.log("url = " , this.url1+postfix);
-    this.url1 += postfix;
-    return this.http.get<any>(this.url1)
+    // this.url1 += postfix;
+    this.lastUrl = this.url1 + postfix;
+    return this.http.get<any>(this.url1 + postfix)
       .pipe(
         tap(_ => {
           console.log('getData3ForSubject() - fetched games', _)})
@@ -60,9 +63,20 @@ export class NbaService {
     // .subscribe(value => {
     //   console.log("value = " , value);
     // })
+  }
 
-
-
+  getDataByPage(postfix): Observable<any>{
+    console.log("last url = " , this.lastUrl);
+    let temp  =this.lastUrl+ postfix;
+    console.log("get from : " , temp);
+    return this.http.get<any>(temp)
+      .pipe(
+        tap(_ => {
+          console.log('getData3ForSubject() - fetched games', _)})
+      );
+    // .subscribe(value => {
+    //   console.log("value = " , value);
+    // })
   }
 
   /*

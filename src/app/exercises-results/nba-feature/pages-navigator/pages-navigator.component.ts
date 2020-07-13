@@ -32,7 +32,7 @@ export class PagesNavigatorComponent implements OnInit {
   @Input()
   total: number ;
   @Input()
-  current: number = 36;
+  current: number = 1;
   @Input()
   n: number = 10;
   start: number;
@@ -41,7 +41,7 @@ export class PagesNavigatorComponent implements OnInit {
 
   ngOnInit(): void {
     this.generateList();
-    this.nbaService.behavSubj.subscribe((res)=>{
+    this.nbaService.resetPagesNav.subscribe((res)=>{
       console.log("subscribe of page nav");
       this.current = 1;
       // this.total = res.meta.total_pages;
@@ -144,8 +144,8 @@ export class PagesNavigatorComponent implements OnInit {
   }
   getNewData(){
     let postfix = "&page="+this.current;
-    this.nbaService.getData3ForSubject(postfix).subscribe((res)=> {
-        this.nbaService.behavSubj.next(res);
+    this.nbaService.getDataByPage(postfix).subscribe((res)=> {
+        this.nbaService.getDataSubject.next(res);
       }
     );
   }

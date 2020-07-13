@@ -16,7 +16,7 @@ export class InnerTestComponent implements OnInit {
 
   }
   doSomething(){
-    this.nbaService.behavSubj.next("outer value... ");
+    this.nbaService.getDataSubject.next("outer value... ");
   }
 
   outerFunc(val){
