@@ -154,7 +154,8 @@ export class NBAFeatureComponent implements OnInit {
     console.log("this.gamesModels" , this.gamesModels);
   }
 
-  getWithSeason(){
+  getWithSeason(val){
+    this.season = val;
     console.log("Getting games from this season - ", this.season, this.seasons);
     let postfix = '&seasons[]='+ this.season;
     //u need to generate https://www.balldontlie.io/api/v1/games?seasons[]=1999&page=5&per_page=60

@@ -25,9 +25,9 @@ Right Now it's happen inside one observer. Inside tap pipe.
 <h3>Team = {{checkInfce.id}} , {{checkInfce.full_name}}</h3>
   <p>season = {{season}}</p>
   <label for="seasons">Choose a Season:</label><br/>
-  <select name="seasons" id="seasons" [(ngModel)]="season" (ngModelChange)="getWithSeason()">
+  <select name="seasons" id="seasons" [(ngModel)]="season" (ngModelChange)="getWithSeason($event)">
     <option
-      *ngFor = "let i of seasons "
+      *ngFor = "let i of seasons " [value]="i"
      >
       <span >{{i}}</span>
       - {{i+1}}</option>
