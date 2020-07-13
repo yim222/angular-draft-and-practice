@@ -25,7 +25,7 @@ Right Now it's happen inside one observer. Inside tap pipe.
 <h3>Team = {{checkInfce.id}} , {{checkInfce.full_name}}</h3>
   <p>season = {{season}}</p>
   <label for="seasons">Choose a Season:</label><br/>
-  <select name="seasons" id="seasons" [(ngModel)]="season" (ngModelChange)="getWithSeason($event)">
+  <select name="seasons" id="seasons" [(ngModel)]="season" (ngModelChange)="getWithSeason()">
     <option
       *ngFor = "let i of seasons " [value]="i"
      >
@@ -41,7 +41,7 @@ Right Now it's happen inside one observer. Inside tap pipe.
 variable the total-page.</p>
 <div *ngFor ="let g of gamesModels ; let i = index">
 <h5>#{{i+1}}</h5>
-  <p>Date - {{g.date | date}} </p>
+  <p>Date - {{g.date | date}} ,  {{'Game-status' |titlecase}}: {{g.status}} , {{g.postSeason? 'Post-Season' : ' in Season' |titlecase}}</p>
 <p class = 'home-team'>{{g.home_team.full_name}} - {{g.home_team_score}}</p>
 <p>VS</p>
 <p class = 'visitor-team'>{{g.visitor_team.full_name}} - {{g.visitor_team_score}}</p>

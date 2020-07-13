@@ -4,7 +4,9 @@ export interface Game1{
   home_team : Team,
   visitor_team: Team,
   home_team_score: number,
-  visitor_team_score: number
+  visitor_team_score: number,
+  status: string,
+  postSeason: boolean
 
 }
 export interface Team{
