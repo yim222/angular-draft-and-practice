@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ColorSampleComponent} from "../color-sample/color-sample.component";
 import {ColorPickerDirective} from "ngx-color-picker";
 
@@ -8,8 +8,9 @@ import {ColorPickerDirective} from "ngx-color-picker";
   templateUrl: './color-picker-viewchild.component.html',
   styleUrls: ['./color-picker-viewchild.component.css']
 })
-export class ColorPickerViewchildComponent implements OnInit {
+export class ColorPickerViewchildComponent implements OnInit, AfterViewInit {
 
+  regJsAccess:any;
   primary = '#1976d2';
 
 
@@ -37,6 +38,8 @@ export class ColorPickerViewchildComponent implements OnInit {
 
   }
 
+
+
   openColorPicker() {
     this.colorPickerDirective.openDialog();
   }
@@ -44,6 +47,21 @@ export class ColorPickerViewchildComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+    let ivl = setInterval(()=>{
+      console.log("regJsAccess = ", this.regJsAccess);
+    }, 2000);
+
+    setTimeout(()=>{
+      console.log("Change the value of regJS  = ");
+      document.getElementById('regJs').innerHTML = "after change";
+
+    }, 3000);
+
+    setTimeout(()=>{
+      console.log("sht down the interval - not working ");
+      window.clearInterval(ivl);
+    }, 10000);
   }
 
 }
