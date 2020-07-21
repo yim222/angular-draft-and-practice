@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ColorSampleComponent} from "../color-sample/color-sample.component";
 import {ColorPickerDirective} from "ngx-color-picker";
 
+
 @Component({
   selector: 'their-example',
   templateUrl: './color-picker-viewchild.component.html',

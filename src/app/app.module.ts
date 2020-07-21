@@ -42,6 +42,7 @@ import { Comp1Component } from './draft-area/comp1/comp1.component';
 import {Pane, ViewChildComp} from "./draft-area/online-example/example1";
 import { ColorPickerViewchildComponent } from './draft-area/color-picker-viewchild/color-picker-viewchild.component';
 import {ColorSampleComponent} from "./draft-area/color-sample/color-sample.component";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 registerLocaleData(localeHe, 'lin-he');//Here u register the locale U've imported.
 registerLocaleData(localFr);//default is fr
 
@@ -84,6 +85,7 @@ registerLocaleData(localFr);//default is fr
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AlertModule.forRoot(),
     ReactiveFormsModule,
