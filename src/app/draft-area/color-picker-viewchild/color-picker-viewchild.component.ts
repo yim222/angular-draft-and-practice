@@ -9,8 +9,8 @@ import {ColorPickerDirective} from "ngx-color-picker";
   styleUrls: ['./color-picker-viewchild.component.css']
 })
 export class ColorPickerViewchildComponent implements OnInit, AfterViewInit {
-
-  regJsAccess:any;
+  @ViewChild('regJsAccess')
+  regJsAccess2:any;
   primary = '#1976d2';
 
 
@@ -48,8 +48,8 @@ export class ColorPickerViewchildComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
-    let ivl = setInterval(()=>{
-      console.log("regJsAccess = ", this.regJsAccess);
+    let ivl =  setInterval(()=>{
+      console.log("regJsAccess = ", this.regJsAccess2,  "value = ", this.regJsAccess2.nativeElement.innerHTML);
     }, 2000);
 
     setTimeout(()=>{
