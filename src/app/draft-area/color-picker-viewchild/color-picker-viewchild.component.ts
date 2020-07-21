@@ -59,7 +59,7 @@ export class ColorPickerViewchildComponent implements OnInit, AfterViewInit {
     }, 3000);
 
     setTimeout(()=>{
-      console.log("sht down the interval - not working ");
+      console.log("sht down the interval - DOES working ");
       window.clearInterval(ivl);
     }, 10000);
   }
