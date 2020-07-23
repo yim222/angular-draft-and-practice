@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ColorSampleComponent} from "../color-sample/color-sample.component";
 import {ColorPickerDirective} from "ngx-color-picker";
+import {MatIcon} from "@angular/material/icon";
 
 
 @Component({
@@ -9,9 +10,10 @@ import {ColorPickerDirective} from "ngx-color-picker";
   styleUrls: ['./color-picker-viewchild.component.css']
 })
 export class ColorPickerViewchildComponent implements OnInit, AfterViewInit {
-  @ViewChild('regJsAccess')
-  regJsAccess2:any;
+  @ViewChild('regJsAccess', {read: ElementRef})//actually U can work with any and it will work too.
+  regJsAccess2:ElementRef;
   primary = '#1976d2';
+  showMe = "nothing";
 
 
   @ViewChild('primaryColorSample')
@@ -26,6 +28,9 @@ export class ColorPickerViewchildComponent implements OnInit, AfterViewInit {
   @ViewChild('primaryInput', {read:ColorPickerDirective})
   colorPickerDirective: ColorPickerDirective;
 
+  @ViewChild(MatIcon)
+  matIcon: MatIcon;
+
   ngAfterViewInit() {
 
     console.log('Values on ngAfterViewInit():');
@@ -35,6 +40,9 @@ export class ColorPickerViewchildComponent implements OnInit, AfterViewInit {
     console.log("primarySampleDiv:", this.primarySampleDiv);
 
     console.log("primaryInput:", this.primaryInput);
+
+    console.log("matIcon:", this.matIcon);
+
 
   }
 
@@ -50,6 +58,7 @@ export class ColorPickerViewchildComponent implements OnInit, AfterViewInit {
 
     let ivl =  setInterval(()=>{
       console.log("regJsAccess = ", this.regJsAccess2,  "value = ", this.regJsAccess2.nativeElement.innerHTML);
+      this.showMe =  this.regJsAccess2.nativeElement.innerHTML;
     }, 2000);
 
     setTimeout(()=>{
