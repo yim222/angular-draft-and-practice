@@ -15,6 +15,11 @@ export class ColorPickerViewchildComponent implements OnInit, AfterViewInit {
   primary = '#1976d2';
   showMe = "nothing";
 
+  @ViewChild('localHtml1')
+  localHtml1: ElementRef;
+
+  @ViewChild('localHtml2', {static: true})
+  localHtml2: ElementRef;
 
   @ViewChild('primaryColorSample')
   primarySampleComponent: ColorSampleComponent;
@@ -32,7 +37,7 @@ export class ColorPickerViewchildComponent implements OnInit, AfterViewInit {
   matIcon: MatIcon;
 
   ngAfterViewInit() {
-
+    console.log("Element before listener added - " , this.localHtml1);
     console.log('Values on ngAfterViewInit():');
 
     console.log("primaryColorSample:", this.primarySampleComponent);
@@ -43,13 +48,30 @@ export class ColorPickerViewchildComponent implements OnInit, AfterViewInit {
 
     console.log("matIcon:", this.matIcon);
 
+    // this.localHtml1.nativeElement.addEventListener("click", this.jsFunc());
+    // document.getElementById("localHtml1").addEventListener("click", this.jsFunc);
+    console.log("Element after listener added - " , this.localHtml1);
+
+    // this.localHtml1.nativeElement.querySelector('localClass1')
+    //   .addEventListener('click',  this.jsFunc);
+    this.localHtml1.nativeElement.addEventListener('click',  this.jsFunc);
+
+    console.log("Testing with static true :  - " , this.localHtml2.nativeElement.innerHtml);
+
+
+
+
 
   }
 
+  jsFunc(event){
+    alert("Js function");
+  }
 
 
   openColorPicker() {
-    this.colorPickerDirective.openDialog();
+    // this.colorPickerDirective.openDialog();
+    // this.primaryInput.openDialog();//WOn't work since it's not recognize the inside property
   }
 
   constructor() { }
@@ -58,12 +80,18 @@ export class ColorPickerViewchildComponent implements OnInit, AfterViewInit {
 
     let ivl =  setInterval(()=>{
       console.log("regJsAccess = ", this.regJsAccess2,  "value = ", this.regJsAccess2.nativeElement.innerHTML);
+      console.log("Testing with static true - after changes :  - " , this.localHtml2.nativeElement.innerHTML);
+
+
       this.showMe =  this.regJsAccess2.nativeElement.innerHTML;
     }, 2000);
 
     setTimeout(()=>{
       console.log("Change the value of regJS  = ");
       document.getElementById('regJs').innerHTML = "after change";
+
+      document.getElementById('localHtml2Id').innerHTML = "after change again ";
+
 
     }, 3000);
 

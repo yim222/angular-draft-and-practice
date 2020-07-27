@@ -35,7 +35,7 @@
     With this, we have covered the most common use case of @ViewChild, but there is still a lot more to it: let's see some more use cases!</p>
   <color-sample
     [color]="primary"
-    #primaryColorSample
+    #primaryColorSample2
     (click)="openColorPicker()">
 
   </color-sample>
@@ -49,5 +49,15 @@
   When You use #refer1 inside tag, U can access that from the template itself but not from the class. </p>
   <b #htmlRef >Case that don't viewChild </b>
   <p>Can I access the above values ? What is it's tag ?? {{htmlRef.tagName}}</p>
+
+  <h2 #localHtml1 id = "localHtml1Id" class ="localClass1">Click me and shoot js function, that defined at the componet</h2>
+  <p>Explanation: At the above, instead of using "document.getE...('localHtml1Id').addEvent... , I am using
+  localHtml1.nativeElement.addEventListenr... . SO I can refer the element by the  class variable, not need to get it from document</p>
+  <p>By the read property U can defined what element U want to get , the DOM element or component if U want to.
+  <br/>On default if it's component the viewChild won't inject the DOM , but the component. </p>
+  <p>U can refer an inner directive of component template ref, but U need as above to read the directive, not the element itself.<br/>
+  See at the openDialog() function the not-working-example. </p>
+
+  <h2 #localHtml2 id = "localHtml2Id" class ="localClass2">initial value</h2>
 
 </div>
