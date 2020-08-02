@@ -19,9 +19,14 @@ import {AngularPipesComponent} from "./angular-pipes/angular-pipes.component";
 import {ExercisesComponent} from "./exercises/exercises.component";
 import {ExercisesResultsComponent} from "./exercises-results/exercises-results.component";
 import {NBAFeatureComponent} from "./exercises-results/nba-feature/nba-feature.component";
+import {AngularFundamentalsComponent} from "./angular-fundamentals/angular-fundamentals.component";
+import {ViewChildDecoratorComponent} from "./angular-fundamentals/components/view-child-decorator/view-child-decorator.component";
 
 
 const routes: Routes = [
+  { path: 'ang-fund', component: AngularFundamentalsComponent, children: [
+    {path: 'view-child', component: ViewChildDecoratorComponent}
+    ] },
   { path: 'learn-rxjs', component: LearnRxJSComponent },
   { path: 'draft-area', component: DraftAreaComponent},
   { path: 'promises', component: PromisesComponent},
