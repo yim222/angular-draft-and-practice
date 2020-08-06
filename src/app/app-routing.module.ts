@@ -21,7 +21,10 @@ import {ExercisesResultsComponent} from "./exercises-results/exercises-results.c
 import {NBAFeatureComponent} from "./exercises-results/nba-feature/nba-feature.component";
 import {AngularFundamentalsComponent} from "./angular-fundamentals/angular-fundamentals.component";
 import {ViewChildDecoratorComponent} from "./angular-fundamentals/components/view-child-decorator/view-child-decorator.component";
-import {SimpleDrawSquareComponent} from "./exercises-results/simple-draw-square/simple-draw-square.component";
+import {
+  AnotherInnerComp,
+  SimpleDrawSquareComponent
+} from "./exercises-results/simple-draw-square/simple-draw-square.component";
 import {ToDeleteComponent} from "./to-delete/to-delete.component";
 
 
@@ -60,7 +63,8 @@ const routes: Routes = [
   { path: 'exercises', component: ExercisesComponent},
   { path: 'exercises-results', component: ExercisesResultsComponent, children: [
       {path: 'nba-exercise', component: NBAFeatureComponent},
-      {path: 'simple-comp1', component: SimpleDrawSquareComponent}
+      {path: 'simple-comp1', component: SimpleDrawSquareComponent},
+      {path: 'inner-template', component: AnotherInnerComp}
 
     ]}
 

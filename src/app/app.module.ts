@@ -45,8 +45,12 @@ import {ColorSampleComponent} from "./angular-fundamentals/components/view-child
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { AngularFundamentalsComponent } from './angular-fundamentals/angular-fundamentals.component';
 import { ViewChildDecoratorComponent } from './angular-fundamentals/components/view-child-decorator/view-child-decorator.component';
-import { SimpleDrawSquareComponent } from './exercises-results/simple-draw-square/simple-draw-square.component';
+import {
+  AnotherInnerComp,
+  SimpleDrawSquareComponent
+} from './exercises-results/simple-draw-square/simple-draw-square.component';
 import { ToDeleteComponent } from './to-delete/to-delete.component';
+
 registerLocaleData(localeHe, 'lin-he');//Here u register the locale U've imported.
 registerLocaleData(localFr);//default is fr
 
@@ -89,7 +93,8 @@ registerLocaleData(localFr);//default is fr
     AngularFundamentalsComponent,
     ViewChildDecoratorComponent,
     SimpleDrawSquareComponent,
-    ToDeleteComponent
+    ToDeleteComponent,
+    AnotherInnerComp
   ],
   imports: [
     BrowserModule,
