@@ -13,15 +13,27 @@ export class ToDeleteComponent implements OnInit {
     let A = [-6, -91, 1011, -100, 84, -22, 0, 1, 473];
     console.log(this.solution(A));
   }
+
+  //find odo vs pairs. if it's equal it's good.
   solution(A) {
-    return A.reduce(this.reducer, 0);
+    let odds = 0;
+    let evens = 0;
+    for (let i=0; i< A.length; i++){
+      if (A[i] % 2 === 0){
+        evens ++;
+      }
+      else{
+        odds++;
+      }
+    }
+    if (evens === odds){
+      return true;
+    }
+    return false;
   }
 
   reducer(acc, curr){
-    if (curr % 4 == 0 ){
-      acc += curr;
-    }
-    return acc;
+
   }
 
 
