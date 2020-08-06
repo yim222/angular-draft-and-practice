@@ -22,6 +22,7 @@ import {NBAFeatureComponent} from "./exercises-results/nba-feature/nba-feature.c
 import {AngularFundamentalsComponent} from "./angular-fundamentals/angular-fundamentals.component";
 import {ViewChildDecoratorComponent} from "./angular-fundamentals/components/view-child-decorator/view-child-decorator.component";
 import {SimpleDrawSquareComponent} from "./exercises-results/simple-draw-square/simple-draw-square.component";
+import {ToDeleteComponent} from "./to-delete/to-delete.component";
 
 
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
     ] },
   { path: 'learn-rxjs', component: LearnRxJSComponent },
   { path: 'draft-area', component: DraftAreaComponent},
+  { path: 'blank-page', component: ToDeleteComponent},
   { path: 'promises', component: PromisesComponent},
   { path: 'services', component: LearnServiceComponent},
   { path: 'subscription', component: SubscriptionComponent },
