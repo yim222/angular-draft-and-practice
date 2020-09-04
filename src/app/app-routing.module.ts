@@ -65,17 +65,7 @@ const routes: Routes = [
       {path: 'nba-exercise', component: NBAFeatureComponent},
       {path: 'simple-comp1', component: SimpleDrawSquareComponent},
       {path: 'inner-template', component: AnotherInnerComp}
-
     ]}
-
-
-
-
-
-
-
-
-
 ];
 
 @NgModule({
