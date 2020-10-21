@@ -1,0 +1,135 @@
+<h1>Angular-Pipes </h1>
+<h2>The pipes of angular (Not the same as the pipes of rxjs - I think) is like good tools ,
+for generate in the display easily things and values, like upper cases, or currency symbol, converting to percentages...
+and more </h2>
+
+<h3>Basic </h3>
+<p>Very simple it can be written like that inside curely brackets (like angular values inside templates) : <br/>
+  <b>{{'{{' + 'myvalue | mypipe}' + '}'}}</b>
+  <br/>
+  <b>If U need to provide params (which available in some pipes) U provide them with :'mypar'. See the docs... </b>
+
+</p>
+
+<h3>References </h3>
+<p>Actually it pretty simple, U just need to be aware or look when U need something, and to understand how it's working. So this is list
+of some references . </p>
+<p>U should insert local, if u want different from the default of USA. </p>
+<p>Local code is refer to language-region. fr-CA = french Canada</p>
+<ul>
+  <li><a href = "https://angular.io/guide/pipes" target ="_blank">Pipes Guide (+live example) </a> </li>
+  <li><a href = "https://angular.io/api/core/Pipe" target ="_blank">Pipe API </a> </li>
+  <li><a href = "https://angular.io/api?type=pipe" target ="_blank">Pipes LIST (API)</a> </li>
+  <li><a href = "https://angular.io/guide/i18n#setting-up-the-locale-of-your-app" target ="_blank">Setting your locale</a> </li>
+  <li><a href = "https://en.wikipedia.org/wiki/ISO_4217" target ="_blank">List of currency codes</a> </li>
+  <li><a href = "https://github.com/angular/angular/tree/master/packages/common/locales" target ="_blank">List of Angular supported locals
+  (See also the basics at setting your locale)</a> </li>
+
+</ul>
+
+<h3>Check locale  see - it's the local of Israel: </h3>
+<p> {{currentDate | date :'fullDate' :'' : 'lin-he'}}</p>
+<p>this of france : </p>
+<p> {{currentDate | date :'fullDate' :'' : 'fr'}}</p>
+
+<h3>Todo - U here - learn and do as u can in 5 hours. From now 1 hour/ U here - (chaining https://angular.io/guide/pipes#chaining-pipes) </h3>
+
+<h4>Some examples</h4>
+<p>{{'angular-pipes works!' | uppercase}}</p>
+
+<p>{{0.2433465448797946464 | percent : '1.6-10': 'en-US'}}</p>
+
+<p>{{0.2433465448797946464 | percent : '1.6-10': 'en-US'}}</p>
+<p>{{222 | currency: 'ILS'}}</p>
+
+<h4>Pipe idea </h4>
+
+<p>In general pipes is prepared functionality of angular to convert(transform)  values, like date and currency in quick and simple way. <br/>
+  pipe operator ( | )</p>
+<h5>Example</h5>
+<p>Date without pipe : <b>{{currentDate}}</b></p>
+<p>Date WITH pipe : <b>{{currentDate | date}}</b> - see how the pipe cuts the trash </p>
+
+<p>Pipe  with  params (each of them separated by ':' : <b>{{currentDate | date: 'shortDate'}}</b> - The param change it to short-Date</p>
+<p>Pipe  with  parmater as component property: <b>{{currentDate | date: datePar1}}</b> - The param here is component property </p>
+<p>Pipe  with  Using my locale : <b>{{currentDate | date: 'shortDate': '': 'lin-he'}}</b> - It should be d/m/y like in Israell</p>
+
+<p>Not linked to pipes only but remember that U can use in typescript get - to format a variable (and use the value)
+X = {{x}}</p>
+
+<div>
+  <button (click)="toggleShort()">Toggle date </button>
+  <p>Pipe  with  parmater as component property: <b>{{currentDate | date: datePar2}}</b> - The param here is component property </p>
+
+</div>
+
+
+
+
+<h4>more 20 exmaples : </h4>
+<ul>
+  <li>
+    <h5>Async - for using with observable </h5>
+<!--    <p>Values : {{try1()| async}}</p>-->
+    <p>Values with async : {{observeable2| async}}</p>
+    <p>Values without async : {{observeable2}}</p>
+
+    <button (click)="try1()"> observable of random action </button>
+  </li>
+
+  <li>
+    <h5>Decimal  - for display decimal number like U set. Or by locale (number) </h5>
+   <p>Have two numbers. <br/>one with many decimal digits = <b>{{manydigits}}</b>,
+     <br/>second with no decimal = <b>{{noDigits}}</b>
+     <br/> third only decimal values  <b>{{decimal}}</b>
+    <br/>
+     U can set the format min.min-max. (it will always show integers)
+     <br/>
+     <b>So for example that : 1.2-5</b>
+     Will show on each :<br/>
+     Many digits = {{manydigits | number: dec1}}, <br/>
+     no decimal = {{noDigits | number: dec1}}<br/>
+     only decimal values  {{decimal | number: dec1}}<br/>
+
+     <b>This {{dec2}} will show on each :</b><br/>
+     Many digits = {{manydigits | number: dec2}}, <br/>
+     no decimal = {{noDigits | number: dec2}}<br/>
+     only decimal values  {{decimal | number: dec2}}<br/>
+
+    <b> Locale {{myLocale}} will show on each :</b><br/>
+     This {{dec2}} will show on each :
+     Many digits = {{manydigits | number: undefined :myLocale}}, <br/>
+     no decimal = {{noDigits  | number: undefined :myLocale}}<br/>
+     only decimal values  {{decimal  | number: undefined :myLocale}}<br/>
+    </p>
+  </li>
+  <li>
+    <h5>Json  - for convert object display to JSON (json) </h5>
+    <p>
+      This is object : <br/>
+      {{object1}}
+    <br/>
+      This is its JSON :<br/>
+      {{object1 | json}}
+    </p>
+  </li>
+  <li>Percent, Currency, date , upper/lower case - are shown above.</li>
+  <li>
+    Key value -
+    this generate the provided object / map to key and values
+
+    <div *ngFor="let item of object2 | keyvalue">
+      {{item.key}}:{{item.value}}
+    </div>
+    <br/>title case :
+    {{'two words' | titlecase}}
+    <br/>Slice - like slice array/string (only this doing only display:
+    string - {{str1}}<br/>
+    {{str1 | slice : 3 : 7}}
+
+  </li>
+</ul>
+
+<h1>Pipes finished </h1>
+
+<!--<p>B: {{0.243 | percent:'4.3-5':'fr-FR'}}</p>-->

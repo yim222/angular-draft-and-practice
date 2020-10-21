@@ -1,0 +1,86 @@
+<p>Explanation on view child: </p>
+
+<p class = "tip1">*This is part of my "draft-project" for inner summaries on angular. Feel free to refer
+  <a href = "https://github.com/yim222/angular-draft-and-practice.git" target = "_blank">it on Github</a> and find more cools things </p>
+<h2>@ViewChild </h2>
+<a href="https://blog.angular-university.io/angular-viewchild/" target="_blank">
+  reference - Angular official guide
+</a>
+<p>*Some of the following summaries are taken from the online guides</p>
+<div class = "tip1">
+  How to use this doc ? - Read the doc, try to understand the examples,  see the logs of the browser console,
+  play with the @ViewChild decorator (comment and uncomment) and see the differences
+</div>
+
+<!--<their-example #el1></their-example>-->
+<h5>The view child can defined by type, then all types will be refernced to that. Or by name... </h5>
+<p>Angular will fill in this property automatically, but only later in the component lifecycle, after the view initialization is completed.<br/>
+  If we want to write component initialization code that uses the references injected by @ViewChild, we need to do it inside the AfterViewInit lifecycle hook.
+</p>
+<p>The @ViewChild decorator cannot see across component boundaries! - this mean inside inner components. </p>
+<p>To summarize: the @ViewChild decorator is a template querying mechanism that is local to the component.
+
+  With this, we have covered the most common use case of @ViewChild, but there is still a lot more to it: let's see some more use cases!</p>
+
+
+<h2>@ViewChild - My simple example - </h2>
+<p class = "tip1"><i>See the row below that connected to the row below it. And the row below it change the p value by JS code, and the value
+  need to be known from the element. <br/>
+  Becasue of that, if you will remove (comment ) the viewchild - @ViewChild('regJsAccess'... ) it wont work</i> </p>
+<p>the value of the below p = {{showMe}} </p>
+<p id ="regJs" #regJsAccess>value =  initial value</p>
+<p>The below row unlike the above case - don't need viewchild. <br/>
+  When You use #refer1 inside tag, U can access that from the template (without necessary to inject it by viewChild) itself but not from the class.  </p>
+<b #htmlRef >Case that don't viewChild </b>
+<p>Can I access the above values ? What is it's tag ?? {{htmlRef.tagName}}</p>
+
+<h3 #localHtml1 id = "localHtml1Id" class ="localClass1">Click me and shoot js function, that defined at the componet</h3>
+<p class = "tip1">Explanation: At the above, instead of using "document.getE...('localHtml1Id').addEvent... , I am using
+  localHtml1.nativeElement.addEventListenr... . SO I can refer the element by the  class variable, not need to get it from document</p>
+<p>This is their example (angular official), with some more explanations:</p>
+<their-example></their-example>
+
+<h2>TO remember - view child explanation  </h2>
+<h3>My conclusion - I think it's important to remember : </h3>
+
+<ul class = "summary1">
+  <li>
+    ViewChild is used for refer inside-template reference to the class. It’s refer only the direct elements,
+    local, not child and not parent.
+  </li>
+  <li>
+    It’s working only after view Init.
+  </li>
+  <li>
+    TemplateReference is #varName inside the component template. It accessible on the template without the viewChild,
+    but needed with viewChild on the class.
+  </li>
+  <li>It’s ok to do multiple the same #elementRef in angular. -->
+    https://stackoverflow.com/a/52170959/9727918
+
+  </li>
+  <li>The default modeling of viewChild is –<br/>
+    plain HTML - ElementRef<br/>
+    Component - ComponentType<br/>
+    If U want other then that, or to refer to directive on the element – Use the read option.
+  </li>
+</ul>
+
+<h3>And angular official docs conclusion :  </h3>
+
+<ul class = "summary1">
+  <li>
+  The @ViewChild decorator allows us to inject into a component class
+  references to elements used inside its template, that's what we should use it for.
+</li>
+  <li>
+    Using @ViewChild we can easily inject components, directives or plain DOM elements. We can even override the defaults of @ViewChild and specify exactly we need to inject,
+    in case that multiple options are available.
+  </li>
+  <li>
+    @ViewChild is a local component template querying mechanism, that cannot see the internals of its child components.
+  </li>
+  <li>
+    By injecting references directly into our component class, we can easily write any coordination logic that involves multiple elements of the template.
+  </li>
+</ul>

@@ -1,0 +1,51 @@
+<p>nba-feature works!</p>
+<p>U here - next time continue with the missions - U have added the initial list.
+  And show each game - done
+  // done -default season current,
+  //todo - 50 Results in a page.// User can switch seasons (until 1980),</p>
+
+<p>Try - I want that in the primary http call, will be called 2 subscribers ,
+1- Get how much totalPages, 2-Get the data and show it. <br/>
+Right Now it's happen inside one observer. Inside tap pipe.
+</p>
+<h3>It didn't worked on the short way, not sure why </h3>
+<app-inner-test></app-inner-test>
+<app-pages-navigator
+*ngIf = "loaded"
+[total]= "totalPages "
+></app-pages-navigator>
+<h1>whats ? </h1>
+<div *ngFor="let item of example">
+  {{item}}
+</div>
+<h1>*** important to remember *** </h1>
+<ul>
+  <li> – short way in subject can makes a lot of problem. see inside short-way-problem</li>
+</ul>
+<h3>Team = {{checkInfce.id}} , {{checkInfce.full_name}}</h3>
+  <p>season = {{season}}</p>
+  <label for="seasons">Choose a Season:</label><br/>
+  <select name="seasons" id="seasons" [(ngModel)]="season" (ngModelChange)="getWithSeason()">
+    <option
+      *ngFor = "let i of seasons " [value]="i"
+     >
+      <span >{{i}}</span>
+      - {{i+1}}</option>
+
+  </select>
+
+<h3>Total totalPages from service  = {{nbaService.totalPages}}</h3>
+<h3>Total totalPages from HERE   = {{totalPages}}</h3>
+
+<p>Here why U need subject - because on one action U want to assign the values, and to get to other
+variable the total-page.</p>
+<div *ngFor ="let g of gamesModels ; let i = index">
+<h5>#{{i+1}}</h5>
+  <p>Date - {{g.date | date}} ,  {{'Game-status' |titlecase}}: {{g.status}} , {{g.postSeason? 'Post-Season' : ' in Season' |titlecase}}</p>
+<p class = 'home-team'>{{g.home_team.full_name}} - {{g.home_team_score}}</p>
+<p>VS</p>
+<p class = 'visitor-team'>{{g.visitor_team.full_name}} - {{g.visitor_team_score}}</p>
+
+<p>---------------------------------------------------</p>
+
+</div>

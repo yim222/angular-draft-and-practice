@@ -1,0 +1,36 @@
+<p>comp1 works!</p>
+<h3> U HERE Continue with trying understand what it's doing - viewChild and what's the use case .</h3>
+<h2>X = {{x}} </h2>
+<h2 (click)="changeY()">Y = {{y}} </h2>
+
+<button  (click)="test(pel)"> This is #pel reference to this element = {{pel}}  </button>
+<p>from the template it's passing differntly. U need to
+  get it from the class itself</p>
+<p>All those methods are available : https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement<br/>
+U here - continue with the studying . Understand and refresh that by the # U can refer and element. inside the template.</p>
+<p #pel >pel = {{pel}} change here as u wish </p>
+<h3>My var = {{myVar}}</h3>
+<h3 #localHtml1 id = "localHtml1Id" class ="localClass1">Click me and shoot js function, that defined at the componet</h3>
+
+<p>View CHild : </p>
+<p>This is the comp-child value values . </p>
+<p>Width - by type (connected to all component from the same type)  ?  = {{childComp.width}} </p>
+
+<p>This is the child compnent </p>
+<app-simple-draw-square #childComp></app-simple-draw-square>
+<p>ANd this is height by name : {{childComp2.height}}</p>
+<app-simple-draw-square #childComp2 ></app-simple-draw-square>
+
+
+<p><b>The same, but as Regular Html : {{childComp3}} U cannot refer directly to that. <br/>
+  Myvar2.tagName = {{myVar2}}
+</b></p>
+<app-simple-draw-square #childComp3 ></app-simple-draw-square>
+
+<app-simple-draw-square #childComp2 ></app-simple-draw-square>
+<h2>Looks like they are not connect all to all. </h2>
+
+
+
+
+

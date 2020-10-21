@@ -14,11 +14,27 @@ import {LearnStyleComponent} from "./learn-style/learn-style.component";
 import {BasicStyleComponent} from "./learn-style/basic-style/basic-style.component";
 import {SCSSComponent} from "./learn-style/scss/scss.component";
 import {PositionUnderstandComponent} from "./learn-style/position-understand/position-understand.component";
+import {DataFlowingComponent} from "./data-flowing/data-flowing.component";
+import {AngularPipesComponent} from "./angular-pipes/angular-pipes.component";
+import {ExercisesComponent} from "./exercises/exercises.component";
+import {ExercisesResultsComponent} from "./exercises-results/exercises-results.component";
+import {NBAFeatureComponent} from "./exercises-results/nba-feature/nba-feature.component";
+import {AngularFundamentalsComponent} from "./angular-fundamentals/angular-fundamentals.component";
+import {ViewChildDecoratorComponent} from "./angular-fundamentals/components/view-child-decorator/view-child-decorator.component";
+import {
+  AnotherInnerComp,
+  SimpleDrawSquareComponent
+} from "./exercises-results/simple-draw-square/simple-draw-square.component";
+import {ToDeleteComponent} from "./to-delete/to-delete.component";
 
 
 const routes: Routes = [
+  { path: 'ang-fund', component: AngularFundamentalsComponent, children: [
+    {path: 'view-child', component: ViewChildDecoratorComponent}
+    ] },
   { path: 'learn-rxjs', component: LearnRxJSComponent },
   { path: 'draft-area', component: DraftAreaComponent},
+  { path: 'blank-page', component: ToDeleteComponent},
   { path: 'promises', component: PromisesComponent},
   { path: 'services', component: LearnServiceComponent},
   { path: 'subscription', component: SubscriptionComponent },
@@ -35,14 +51,21 @@ const routes: Routes = [
       {path: 'scss', component: SCSSComponent},
       {path: 'und-positions', component: PositionUnderstandComponent}
 
-    ] }
+    ] },
+  { path: 'data-flowing', component: DataFlowingComponent, children:[
+      { path: '', component: DataFlowingComponent},
+      // {path:'simple', component: BasicStyleComponent},
+      // {path: 'scss', component: SCSSComponent},
+      // {path: 'und-positions', component: PositionUnderstandComponent}
 
-
-
-
-
-
-
+    ] },
+  { path: 'ng-pipes', component: AngularPipesComponent},
+  { path: 'exercises', component: ExercisesComponent},
+  { path: 'exercises-results', component: ExercisesResultsComponent, children: [
+      {path: 'nba-exercise', component: NBAFeatureComponent},
+      {path: 'simple-comp1', component: SimpleDrawSquareComponent},
+      {path: 'inner-template', component: AnotherInnerComp}
+    ]}
 ];
 
 @NgModule({

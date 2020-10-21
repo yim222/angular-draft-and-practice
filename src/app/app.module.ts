@@ -24,6 +24,36 @@ import { LearnStyleComponent } from './learn-style/learn-style.component';
 import { BasicStyleComponent } from './learn-style/basic-style/basic-style.component';
 import { SCSSComponent } from './learn-style/scss/scss.component';
 import { PositionUnderstandComponent } from './learn-style/position-understand/position-understand.component';
+import { DataFlowingComponent } from './data-flowing/data-flowing.component';
+import { ItemComponent } from './data-flowing/item/item.component';
+import { ItemsComponent } from './data-flowing/items/items.component';
+import { AngularPipesComponent } from './angular-pipes/angular-pipes.component';
+import { HttpClientModule }    from '@angular/common/http';
+//Import locales
+import { registerLocaleData } from '@angular/common';
+import localeHe from '@angular/common/locales/he';
+import localFr from '@angular/common/locales/fr';
+import { ExercisesComponent } from './exercises/exercises.component';
+import { ExercisesResultsComponent } from './exercises-results/exercises-results.component';
+import { NBAFeatureComponent } from './exercises-results/nba-feature/nba-feature.component';
+import { InnerTestComponent } from './exercises-results/inner-test/inner-test.component';
+import { PagesNavigatorComponent } from './exercises-results/nba-feature/pages-navigator/pages-navigator.component';
+import { Comp1Component } from './draft-area/comp1/comp1.component';
+import {Pane, ViewChildComp} from "./draft-area/online-example/example1";
+import { ColorPickerViewchildComponent } from './angular-fundamentals/components/view-child-decorator/color-picker-viewchild/color-picker-viewchild.component';
+import {ColorSampleComponent} from "./angular-fundamentals/components/view-child-decorator/color-sample/color-sample.component";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { AngularFundamentalsComponent } from './angular-fundamentals/angular-fundamentals.component';
+import { ViewChildDecoratorComponent } from './angular-fundamentals/components/view-child-decorator/view-child-decorator.component';
+import {
+  AnotherInnerComp,
+  SimpleDrawSquareComponent
+} from './exercises-results/simple-draw-square/simple-draw-square.component';
+import { ToDeleteComponent } from './to-delete/to-delete.component';
+
+registerLocaleData(localeHe, 'lin-he');//Here u register the locale U've imported.
+registerLocaleData(localFr);//default is fr
+
 
 @NgModule({
   declarations: [
@@ -45,17 +75,40 @@ import { PositionUnderstandComponent } from './learn-style/position-understand/p
     LearnStyleComponent,
     BasicStyleComponent,
     SCSSComponent,
-    PositionUnderstandComponent
+    PositionUnderstandComponent,
+    DataFlowingComponent,
+    ItemComponent,
+    ItemsComponent,
+    AngularPipesComponent,
+    ExercisesComponent,
+    ExercisesResultsComponent,
+    NBAFeatureComponent,
+    InnerTestComponent,
+    PagesNavigatorComponent,
+    Comp1Component,
+    ViewChildComp,
+    Pane,
+    ColorPickerViewchildComponent,
+    ColorSampleComponent,
+    AngularFundamentalsComponent,
+    ViewChildDecoratorComponent,
+    SimpleDrawSquareComponent,
+    ToDeleteComponent,
+    AnotherInnerComp
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AlertModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    // {provide: myLocal, useValue: 'lin-he'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

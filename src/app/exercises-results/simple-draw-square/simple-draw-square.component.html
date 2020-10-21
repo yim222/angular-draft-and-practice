@@ -1,0 +1,25 @@
+<p>simple-draw-square </p>
+<p>It's the SOLUTION of the  exrecise at the exercises page. </p>
+
+<p>Simple ng model connect (u need [(ngModel)] ) : </p>
+
+<p>x1 = {{x1}} width = {{width}}</p>
+<input name = "x1" [(ngModel)] = "x1"/>
+  <br/>
+  Width: <br/>
+  <input name = "width" type ="number"   [(ngModel)] = "width" name ="width"   ngDefaultControl/><br/>
+  height:<br/>
+  <input name = "height" type ="number" [(ngModel)] = "height" name ="height"/><br/>
+  Frame color (Insert valid color ):<br/>
+  <input name = "frame" [(ngModel)] = "frameColor"/><br/>
+  Fill color (Insert valid color ):<br/>
+  <input name = "filling" [(ngModel)] = "fillColor"/><br/>
+
+
+<br/><br/>
+<div
+
+[ngStyle]="{'width':+width+'px', 'height': +height+'px', 'border': frameColor + ' solid 3px',
+'background-color': fillColor}"
+></div>
+

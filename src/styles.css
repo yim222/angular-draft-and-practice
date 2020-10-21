@@ -2,3 +2,12 @@
 body{
   padding: 2%;
 }
+.tip1{
+  font: 20px bold Roboto;
+  color: #da3959;
+  background: white;
+  border-radius: 5px;
+  border: solid 2px #da3959;
+  width: 75%;
+  padding: 5px;
+}

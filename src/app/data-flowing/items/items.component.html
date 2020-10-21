@@ -1,0 +1,9 @@
+<p>items works!</p>
+<h2>Last-Clicked: {{lastClicked}}</h2>
+<h2>Last-Clicked-after {{secs1}} Seconds: {{lastClicked2}}</h2>
+<app-item *ngFor = "let num of numbersArr; index as x" [itemPar] = "num" (parentConnections)="getValueFromChild($event)"
+(parentConnections3)="getLastSecondClicked($event)"
+>
+
+
+</app-item>

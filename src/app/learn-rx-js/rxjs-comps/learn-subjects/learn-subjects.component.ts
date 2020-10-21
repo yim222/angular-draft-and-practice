@@ -15,13 +15,13 @@ export class LearnSubjectsComponent implements OnInit {
   ngOnInit() {
     // let counter = interval(1000).subscribe(sec=>console.log(sec + " seconds"));
 
-    // this.do1();
+    this.do1();
     // this.do2();
     //this.do3WithRefCount();
     // this.do4BeahviorSubject();
     // this.do5WithRegular();
     // this.do6WithReplaySubject();
-    this.doDraftiTries();
+    // this.doDraftiTries();
 
 
     let regularSubj = new Subject();
@@ -67,20 +67,34 @@ export class LearnSubjectsComponent implements OnInit {
     subj1.subscribe({
       next: this.func2
     });
-    subj1.next(8);
+    subj1.next(2228);
 
     //Yet get the idea , and subject is vice versa from observable - it's observer !
 
     //But we can pass it to observable :
 
     const observable = from([134, 222, 344]);
+    // console.log("Subscribe subject to observer. by call  observable.subscribe(subj1);");
+    // observable.subscribe(subj1);
+    console.log("Subscribe subject to observer with full code version . ");
 
-    observable.subscribe(subj1);
-
-    const obs1 = interval(5000);
-
-   let subscribe1 =  obs1.subscribe(this.func1);
-    let subscribe2 =  obs1.subscribe(this.func2);
+    observable.subscribe((v)=>{
+      subj1.next(v);
+    });
+    console.log("that's the POINT - U can do with subject many subscriptions that U want that will happen, and attach it " +
+      "to observable when U want. " +
+      "/nThe below is just simple interval of regualr subscription. " +
+      "U can do those 2 functions with Only ONE subject. ")
+    const obs1 = interval(1000);
+   // let subscribe1 =  obs1.subscribe(this.func1); // U can in short do it like that
+   let subscribe1 =  obs1.subscribe((v)=>{
+     console.log("action happen because subscribe 1");
+     this.func1(v);
+   });
+    let subscribe2 =  obs1.subscribe((v)=>{
+      console.log("action happen because subscribe 2");
+      this.func2(v);
+    });
 
     setTimeout(()=>{
       subscribe1.unsubscribe();

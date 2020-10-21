@@ -4,6 +4,8 @@ import axios from 'axios';
 import set = Reflect.set;
 import {FormControl} from "@angular/forms";
 import {interval, Observable, Subject} from "rxjs";
+import {ViewChildComp} from "./online-example/example1";
+
 //TODO - gitting.
 @Component({
   selector: 'app-draft-area',
@@ -12,13 +14,15 @@ import {interval, Observable, Subject} from "rxjs";
 })
 export class DraftAreaComponent implements OnInit , AfterViewChecked, AfterViewInit {
 
+  childTemplate;
+
   inputControl = new FormControl();
   inputSimpleControl ='';
   private values3: string;
   myObj = {
     a:{a2: "innterObj"}
   }
-
+  providedX = 10;
   myProps =    {
     promotion_type: {
       Combo: "my-combo", Poster: "PromotionApp Poster!"
@@ -40,6 +44,7 @@ export class DraftAreaComponent implements OnInit , AfterViewChecked, AfterViewI
   inputValue1: string = "Default value";
   value = '';
   value2 = "p";
+  subj1: Subject<number> = new Subject();
   onEnter(value: string) { this.value = value; }
 
   onChange1(ev: any){
@@ -55,12 +60,25 @@ export class DraftAreaComponent implements OnInit , AfterViewChecked, AfterViewI
 
     this.values3 += event.key + ' | ';
   }
-  
-  
+
+  changeProvidedX(){
+    this.providedX = 30;
+  }
+  changeProvidedX2(){
+    this.subj1.subscribe(v=>{
+      this.providedX = v;
+
+    });
+    this.subj1.next(50);
+  }
   /******************************************/
 
 
   ngOnInit() {
+    setTimeout(()=>{
+      this.providedX = 20;
+      console.log("Change providedX = " + this.providedX);
+    }, 5000);
     this.s.changeX();
     let str:string = 'promotion_type';
     console.log(this.myProps)
@@ -94,6 +112,7 @@ export class DraftAreaComponent implements OnInit , AfterViewChecked, AfterViewI
     this.mySubject.subscribe(()=>console.log("subscriber2"));
     this.myObservable.subscribe(this.mySubject);
     // this.myObservable2.subscribe(this.mySubject);
+    // this.myY = this.comp1.y;
 
 
 
@@ -110,6 +129,7 @@ export class DraftAreaComponent implements OnInit , AfterViewChecked, AfterViewI
   }
 
   ngAfterViewChecked(){
+    console.log("view checkedd? ")
 
   }
 
