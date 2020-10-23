@@ -15,14 +15,15 @@ export class ItemComponent implements OnInit {
   parentConnections = new EventEmitter();
 
   @Output()
-  parentConnections3 = new EventEmitter();
+  parentConnections2 = new EventEmitter();
 
   clicked:any = 0;
   constructor() { }
 
 
   connectParent(){
-    console.log("Connecting parent")
+    console.log("Connecting parent");
+    this.clicked++;
     this.parentConnections.emit(this.number);
   }
 
@@ -33,7 +34,7 @@ export class ItemComponent implements OnInit {
     // <--------- only added this line!
   }
   connectParent3(){
-    this.parentConnections3.emit(this.parentConnections);
+    this.parentConnections2.emit(this.parentConnections);
   }
 
   connectParentError(){

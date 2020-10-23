@@ -1,22 +1,31 @@
-<p>data-flowing works!</p>
-<p>Link - https://angular.io/guide/component-interaction</p>
+<h1>Data-Flowing At Angular example</h1>
+<p>Link to <a href = 'https://angular.io/guide/component-interaction' target="_blank"></a>docs</p>
 
-<p>Mission:</p>
+<p>* Notice - Outputs, is for data from the sub component, which can arrived only from dynamic events.
+  Like click, or timer, input changes and like that. (What's not event obviously  be able
+  to send from parent so U don't need to make it output.  But those events should be fired from where U want or need.
+</p>
+<p>By the below mission U can understand Use Case for that problem. </p>
+<p>Mission :</p>
 <ul>
   <li> Do a parent component that contain many items. - DONE </li>
   <li>First when click it's move to parent - DONE </li>
-  <li>When click on each item the parent should show the item after 1 second. -If occured some clicks it should show them three  - U here </li>
+  <li>When click on each item the parent should show . </li>
+  <li>*** Bonus ***</li>
+  <li>Do another field for occured some clicks it should show them three  - U here </li>
   <li>Add toggle options that will Enable option to show the items only of the last click. </li>
 
 
 </ul>
 
-<p>! Outputs, and data from component, can arrived only from dynamic events. Like click, or timer, and like that. (What's not event must be able
-to send from parent so U don't need to make it output. But those events should be fired from where U want or need. </p>
 
 <app-items [par1]="10"></app-items>
-<p>Steps - create eventEmitter inside the child - with @Output, emit the values define function in the parent that get it. </p>
+<h3>Steps to create outputs (event-emitters, data-flow)</h3>
+<p>- create eventEmitter inside the child - with @Output, that will emit the values.</p>
+<p>-define function in the parent that get it. </p>
+<p><b>- Then U can use the the Output as event inside your component.</b> </p>
+<p>Pass the parent function as event to the child directive with round brackets. Like this - (parentConnections2)</p>
 <p>Notice - the output is inside the component that should out it (the child)</p>
 <p>Don't forget the annotation (decorator) @Output</p>
-
+<p>refer example/ </p>
 <p>TODO - write and do examples of inputs flow back and forward, inside and out component. U have something in the products project. </p>

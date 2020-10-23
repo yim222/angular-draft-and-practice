@@ -1,8 +1,10 @@
-<p>items works!</p>
+<h1>Items - I am parent of many items </h1>
+
+<p>This field using value that came up from child's event: </p>
 <h2>Last-Clicked: {{lastClicked}}</h2>
-<h2>Last-Clicked-after {{secs1}} Seconds: {{lastClicked2}}</h2>
+<h2 *ngIf = "show2ndField">Last-Clicked-after {{secs1}} Seconds (click more then once) : {{lastClicked2}}</h2>
 <app-item *ngFor = "let num of numbersArr; index as x" [itemPar] = "num" (parentConnections)="getValueFromChild($event)"
-(parentConnections3)="getLastSecondClicked($event)"
+          (parentConnections2)="getLast3SecondClicked($event)"
 >
 
 

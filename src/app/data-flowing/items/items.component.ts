@@ -16,6 +16,7 @@ export class ItemsComponent implements OnInit {
   lastClicked2: any = 5;
 
   secs1: number = 3;
+  private show2ndField: boolean = true;
 
   constructor() { }
 
@@ -24,6 +25,10 @@ export class ItemsComponent implements OnInit {
 
       this.numbersArr.push(i);
     }
+  }
+
+  toggle2ndField(){
+    this.show2ndField = !this.show2ndField;
   }
 
   getValueFromChild(val){
@@ -42,8 +47,9 @@ export class ItemsComponent implements OnInit {
     return null;
   }
 
-  getLastSecondClicked(event: EventEmitter<any>){
-    console.log("getLastSecondClicked");
+  getLast3SecondClicked(event: EventEmitter<any>){
+
+    console.log("getLast3SecondClicked ", event);
    let x =  event.pipe(debounce(()=> interval(3000)));
     x.subscribe(val =>{
       // this.lastClicked2.push(val);
