@@ -65,11 +65,12 @@ don't exist on the component directrly . </p>
 
 <p>Or as reference to input </p>
 
-write here <input #input1 /><br>
-see here (as H2) by refer the input {{input1.value}}
+write here <input #input1 (keyup)="true" /><br>
+see here (as H2) by refer the input {{input1.value}}<br/>
 
 <label>Type something:
-  <input #customerInput>{{customerInput.value}}
+  <input #customerInput (keyup)="0">{{customerInput.value}}
 </label>
+<p>{{customerInput.value}} xx</p>
 
 <h1>Goodbye Odysii</h1>
