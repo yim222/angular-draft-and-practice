@@ -52,6 +52,8 @@ import {
 import { ToDeleteComponent } from './to-delete/to-delete.component';
 import { Ng2SmartTableComponent } from './draft-area/ng2-smart-table/ng2-smart-table.component';
 import { StateDataManagementMainComponent } from './state-data-management/state-data-management-main/state-data-management-main.component';
+import {ProductStoreComponent} from "./state-data-management/sub-components/product-list-components";
+import { MainWithRxjsComponent } from './state-data-management/sub-components/with-rxjs/main-with-rxjs/main-with-rxjs.component';
 
 registerLocaleData(localeHe, 'lin-he');//Here u register the locale U've imported.
 registerLocaleData(localFr);//default is fr
@@ -98,7 +100,9 @@ registerLocaleData(localFr);//default is fr
     ToDeleteComponent,
     AnotherInnerComp,
     Ng2SmartTableComponent,
-    StateDataManagementMainComponent
+    StateDataManagementMainComponent,
+    ProductStoreComponent,
+    MainWithRxjsComponent
   ],
   imports: [
     BrowserModule,
