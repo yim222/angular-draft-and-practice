@@ -26,6 +26,7 @@ import {
   SimpleDrawSquareComponent
 } from "./exercises-results/simple-draw-square/simple-draw-square.component";
 import {ToDeleteComponent} from "./to-delete/to-delete.component";
+import {StateDataManagementMainComponent} from "./state-data-management/state-data-management-main/state-data-management-main.component";
 
 
 const routes: Routes = [
@@ -65,6 +66,11 @@ const routes: Routes = [
       {path: 'nba-exercise', component: NBAFeatureComponent},
       {path: 'simple-comp1', component: SimpleDrawSquareComponent},
       {path: 'inner-template', component: AnotherInnerComp}
+    ]},
+  { path: 'state-data-management', component: StateDataManagementMainComponent, children: [
+      {path: '', component: StateDataManagementMainComponent},
+      // {path: 'simple-comp1', component: SimpleDrawSquareComponent},
+      // {path: 'inner-template', component: AnotherInnerComp}
     ]}
 ];
 

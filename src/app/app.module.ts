@@ -51,6 +51,7 @@ import {
 } from './exercises-results/simple-draw-square/simple-draw-square.component';
 import { ToDeleteComponent } from './to-delete/to-delete.component';
 import { Ng2SmartTableComponent } from './draft-area/ng2-smart-table/ng2-smart-table.component';
+import { StateDataManagementMainComponent } from './state-data-management/state-data-management-main/state-data-management-main.component';
 
 registerLocaleData(localeHe, 'lin-he');//Here u register the locale U've imported.
 registerLocaleData(localFr);//default is fr
@@ -96,7 +97,8 @@ registerLocaleData(localFr);//default is fr
     SimpleDrawSquareComponent,
     ToDeleteComponent,
     AnotherInnerComp,
-    Ng2SmartTableComponent
+    Ng2SmartTableComponent,
+    StateDataManagementMainComponent
   ],
   imports: [
     BrowserModule,
