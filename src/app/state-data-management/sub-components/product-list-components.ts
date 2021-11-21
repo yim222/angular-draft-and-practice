@@ -4,7 +4,18 @@ import {Component, Input, OnInit} from '@angular/core';
   selector: 'app-products-store',
   template: `
     <div>
+      <!-- Won't work     {{view}}/-->
       <h2>Here goes the products store</h2>
+      <div *ngIf="localData; else elseBlock;">
+
+        <div *ngFor="let item of localData; index as i" key="i">
+
+          <span>{{item.name}}</span> = <span>{{item.price}}</span>
+
+        </div>
+      </div>
+      <ng-template #elseBlock>Content is null.</ng-template>
+
     </div>
   `,
   styleUrls: []
@@ -15,18 +26,53 @@ export class ProductStoreComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.originalData) {
+      this.dataToArray();
+      this.startTimer();
+    };
   }
 
   @Input()
-  data: any;
-  view = `
-<div *ngFor="item of data; index as i" key = "i">
+  originalData: any;
 
-<span>{item.name}</span> <span>{item.price}</span>
+  localData: any;
+  interval;
 
-</div>
-`
+  /**It won't work like this in Angular (unlike React). You should handle all the html from the template only. */
+  // view = <h1>Hi</h1>;
+//   view2 = `
+// <div *ngFor="item of data; index as i" key = "i">
+//
+// <span>{item.name}</span> <span>{item.price}</span>
+//
+// </div>
+// `
 
+
+  dataToArray() {
+    this.localData = [];
+    // this.data = [];
+    console.log("original data = ", this.originalData)
+    for (const [key, value] of Object.entries(this.originalData)) {
+      console.log(`${key}: ${value}`);
+      this.localData.push({name: key, price: value});
+    }
+
+  }
+
+  startTimer() {
+    this.interval = setInterval(() => {
+      this.localData = this.localData.map(item =>{
+        item.price =  this.getRandomInt(100);
+        return item;
+      })
+      console.log("interval");
+    }, 3000);
+  }
+
+  getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
 }
 
 /*

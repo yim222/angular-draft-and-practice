@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {productsMock} from "../../products-mock";
 
 @Component({
   selector: 'app-main-with-rxjs',
@@ -8,8 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class MainWithRxjsComponent implements OnInit {
 
   constructor() { }
-
+  productsMockLocal: any ;//= productsMock;
   ngOnInit(): void {
+    this.productsMockLocal = productsMock;
+    console.log("productsMockLocal = ", this.productsMockLocal)
+
   }
 
 }
