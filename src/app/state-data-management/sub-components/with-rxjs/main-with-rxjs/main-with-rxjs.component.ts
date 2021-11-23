@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {productsMock} from "../../products-mock";
+import {globalData} from "../../product-list-components";
 
 @Component({
   selector: 'app-main-with-rxjs',
@@ -12,8 +13,21 @@ export class MainWithRxjsComponent implements OnInit {
   productsMockLocal: any ;//= productsMock;
   ngOnInit(): void {
     this.productsMockLocal = productsMock;
-    console.log("productsMockLocal = ", this.productsMockLocal)
+    console.log("productsMockLocal = ", this.productsMockLocal);
+    this.startTimer2();
 
   }
+  startTimer2() {
+    setInterval(() => {
+      // this.localData = this.localData.map(item =>{
+      //   item.price =  this.getRandomInt(100);
+      //   return item;
+      // })
 
+      globalData.subscribe(data=>{
+        console.log("Observable data from main with rxjs= ", data)
+      })
+      console.log("interval2");
+    }, 3000);
+  }
 }
