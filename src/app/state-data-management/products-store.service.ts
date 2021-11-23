@@ -10,21 +10,17 @@ export class ProductsStoreService {
 
   constructor() {
     this.dataToArray();
-
     this.startTimer2();
     // this.globalData.s
 
   }
   localData = [];
 
-
   getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
   dataToArray() {
-    // this.localData = [];
-    // this.data = [];
     console.log("original data = ", productsMock)
     for (const [key, value] of Object.entries(productsMock)) {
       console.log(`${key}: ${value}`);
@@ -33,27 +29,30 @@ export class ProductsStoreService {
 
   }
 
-  productsStore2 = new BehaviorSubject(this.localData);
-  getProductsStore2 = this.productsStore2.asObservable();
+  productsStore = new BehaviorSubject(this.localData);
+  getProductsStore = this.productsStore.asObservable();
 
-  setProdcutsStore2(){
+  setProductsStore(){
     console.log("setProductsStor")
     this.localData = this.localData.map(item =>{
       item.price =  this.getRandomInt(100);
       return item;
     });
-    this.productsStore2.next(this.localData);
+    this.productsStore.next(this.localData);
   }
 
   startTimer2() {
     let invl = setInterval(() => {
-      this.setProdcutsStore2();
+      this.setProductsStore();
       setTimeout(()=>{
         clearInterval(invl);
 
       }, 30000)
-    }, 2000);
+    }, 3000);
+  }
 
+  addNewProduct(){
+    this.localData.push({name: "wayne", price: 200});
   }
 
 }

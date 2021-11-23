@@ -16,6 +16,8 @@ import {ProductsStoreService} from "../products-store.service";
           <span>{{item.name}}</span> = <span>{{item.price}}</span>
 
         </div>
+        <button (click)="dataService.addNewProduct()">Add product demo</button>
+
       </div>
       <ng-template #elseBlock>Content is null.</ng-template>
 
@@ -23,38 +25,28 @@ import {ProductsStoreService} from "../products-store.service";
   `,
   styleUrls: []
 })
+/**
+ * See how all you have to do is to assign your local field to the store.
+ */
 export class ProductStoreComponent implements OnInit, OnChanges {
   constructor(private dataService: ProductsStoreService) {
 
   }
+  /**Fields**/
+  localData: any;
 
+  /**Functions**/
   ngOnInit(): void {
-    if (this.originalData) {
-
-      this.dataToArray();
-      this.startTimer();
-      this.startTimer2();
-    }
+    this.dataService.productsStore.subscribe(data => {
+      this.localData = data;
+    });
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("local data = ", this.localData, "subject = ", this.productsStore1);
 
   }
-
   ngDoCheck() {
-    console.log("do change")
-    console.log("local data = ", this.localData, "subject = ", this.productsStore1.next(this.localData));
-
   }
-
-
-  @Input()
-  originalData: any;
-
-  localData: any;
-  interval;
-  productsStore1: Subject<any> = new Subject<any>();
 
 
   /**It won't work like this in Angular (unlike React). You should handle all the html from the template only. */
@@ -67,52 +59,6 @@ export class ProductStoreComponent implements OnInit, OnChanges {
 // </div>
 // `
 
-
-  dataToArray() {
-    this.localData = [];
-    // this.data = [];
-    console.log("original data = ", this.originalData)
-    for (const [key, value] of Object.entries(this.originalData)) {
-      console.log(`${key}: ${value}`);
-      this.localData.push({name: key, price: value});
-    }
-
-  }
-
-  startTimer() {
-    this.interval = setInterval(() => {
-      // this.localData = this.localData.map(item => {
-      //   item.price = this.getRandomInt(100);
-      //   return item;
-      // })
-      this.dataService.productsStore2.subscribe(data => {
-        this.localData = data;
-      });
-      console.log("interval");
-    }, 3000);
-  }
-
-  //  productsStore = new Subject<any>();
-  //todo here - timer 2 that the subject take the values and changes them
-
-  startTimer2() {
-    this.interval = setInterval(() => {
-      // this.localData = this.localData.map(item =>{
-      //   item.price =  this.getRandomInt(100);
-      //   return item;
-      // })
-
-      this.dataService.productsStore2.subscribe(data => {
-        console.log("Observable data from product list= ", data)
-      })
-      console.log("interval2");
-    }, 3000);
-  }
-
-
-  getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-  }
 }
 
 /*
@@ -170,7 +116,7 @@ export class ProductsDemo1Component implements OnInit {
   localData;
 
   ngOnInit(): void {
-    this.dataService.productsStore2.subscribe(data => {
+    this.dataService.productsStore.subscribe(data => {
       this.localData = data;
     });
     // this.startTimer();
@@ -232,7 +178,7 @@ export class ProductsDemo2Component implements OnInit {
       //   item.price = this.getRandomInt(100);
       //   return item;
       // })
-      this.dataService.productsStore2.subscribe(data => {
+      this.dataService.productsStore.subscribe(data => {
         this.localData = data;
       });
       console.log("interval");

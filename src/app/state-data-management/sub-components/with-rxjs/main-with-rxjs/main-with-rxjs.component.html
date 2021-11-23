@@ -1,6 +1,25 @@
 <div class = "main-specific">
-  <p>main-with-rxjs works!</p>
-  <app-products-store [originalData]= "productsMockLocal"></app-products-store>
+  <h4>main-with-rxjs !</h4>
+  <p>Here you can see three different components, that get the value from the store, without any connection between them.
+    <br/>See how all you have to do is to assign your local field to the store.
+    <br/>of course that you can choose to pass the values as props, and you will do the same concept from the component that passes the props.</p>
+  <p>I am using here a behavior subject, inside a service. There I'm defining what will happen with the value. In the component that use it
+    - <b>The subscribers </b> I'm only subscribing to that value and assin it into the local property.
+    <b>***Amazing and important – Since when you do a subscription, every change on the observable, will be automatically be reflect in the object that has subscribed to it – it’s the meaning of observable, that it’s always being watched (observed)</b></p>
+<ul>
+  <h3>The steps:</h3>
+  <li>-Create a service</li>
+  <li>Define there the value of behavior subject( can be single, or object, or Array) - <br/>
+  For example:   productsStore = new BehaviorSubject(this.localData);
+<br/> See more at products-store.service.ts
+  </li>
+  <li>Define there the changing - for example see there the setProductsStore, and the timer that uses it. ("subj.next(newValue)" ) </li>
+  <li>In any component you want to use it, subscribe to the subject and assign the values to the local property. <br/>
+    this.dataService.productsStore.subscribe(data => this.localData = data;});
+  </li>
+  <li>That's all.</li>
+</ul>
+  <app-products-store ></app-products-store>
   <app-products-demo1></app-products-demo1>
   <app-products-demo2></app-products-demo2>
 </div>

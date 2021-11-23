@@ -24,7 +24,7 @@ export class MainWithRxjsComponent implements OnInit {
       //   return item;
       // })
 
-      this.dataService.productsStore2.subscribe(data=>{
+      this.dataService.productsStore.subscribe(data=>{
         console.log("Observable data from main with rxjs= ", data)
       })
       console.log("interval2");
