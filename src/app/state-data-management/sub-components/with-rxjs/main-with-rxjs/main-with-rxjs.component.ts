@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {productsMock} from "../../products-mock";
-import {globalData} from "../../product-list-components";
+import {ProductsStoreService} from "../../../products-store.service";
 
 @Component({
   selector: 'app-main-with-rxjs',
@@ -9,7 +9,7 @@ import {globalData} from "../../product-list-components";
 })
 export class MainWithRxjsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataService: ProductsStoreService) { }
   productsMockLocal: any ;//= productsMock;
   ngOnInit(): void {
     this.productsMockLocal = productsMock;
@@ -24,7 +24,7 @@ export class MainWithRxjsComponent implements OnInit {
       //   return item;
       // })
 
-      globalData.subscribe(data=>{
+      this.dataService.productsStore2.subscribe(data=>{
         console.log("Observable data from main with rxjs= ", data)
       })
       console.log("interval2");
