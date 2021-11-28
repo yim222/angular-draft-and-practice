@@ -8,3 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'DraftAndPractice';
 }
+
+/**
+ * TODO
+ * - U did state management with Subjects. Do it with NgRx too.
+ */
